@@ -15,17 +15,21 @@ import lombok.ToString;
 @ToString
 public class MemberDTO {
 	private Long id;
-	private String memberEmail;
+	private String memberId;
 	private String memberPassword;
 	private String memberName;
+	private String memberPhone;
+	private String memberEmail;
 	
 	public static MemberDTO toMemberDTO(MemberEntity memberEntity) {
 		MemberDTO memberDTO = new MemberDTO();
 		
 		memberDTO.setId(memberEntity.getId());
-		memberDTO.setMemberEmail(memberEntity.getMemberEmail());
+		memberDTO.setMemberId(memberEntity.getMemberId());
 		memberDTO.setMemberPassword(memberEntity.getMemberPassword());
 		memberDTO.setMemberName(memberEntity.getMemberName());
+		memberDTO.setMemberPhone(memberEntity.getMemberPhone());
+		memberDTO.setMemberEmail(memberEntity.getMemberEmail());
 		
 		return memberDTO;
 	}

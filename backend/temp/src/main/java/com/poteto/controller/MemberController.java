@@ -26,7 +26,7 @@ public class MemberController {
 		MemberDTO loginResult = memberService.login(memberDTO);
 		if(loginResult != null) {
 			// login 성공
-			session.setAttribute("loginEmail", loginResult.getMemberEmail());
+			session.setAttribute("loginId", loginResult.getMemberId());
 			return "main";
 		}
 		else {
@@ -59,12 +59,12 @@ public class MemberController {
 		return "login";
 	}
 	
-	@PostMapping("/member/email-check")
+	@PostMapping("/member/Id-check")
 	// ajax를 사용 할 때에는 @ResponseBod를 사용한다.
-	public @ResponseBody String emailCheck(@RequestParam("memberEmail") String memberEmail) {
-		System.out.println("memberEmail = " + memberEmail);
+	public @ResponseBody String IdCheck(@RequestParam("memberId") String memberId) {
+		// System.out.println("memberId = " + memberId);
 		
-		String checkResult = memberService.emailCheck(memberEmail);
+		String checkResult = memberService.IdCheck(memberId);
 		return checkResult;
 	}
 }

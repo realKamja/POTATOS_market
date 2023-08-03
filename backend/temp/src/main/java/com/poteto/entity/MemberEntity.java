@@ -21,7 +21,7 @@ public class MemberEntity {
 	private Long id;
 	
 	@Column(unique = true) // unique 제약조건 추가
-	private String memberEmail;
+	private String memberId;
 	
 	@Column
 	private String memberPassword;
@@ -29,11 +29,20 @@ public class MemberEntity {
 	@Column
 	private String memberName;
 	
+	@Column
+	private String memberPhone;
+	
+	@Column
+	private String memberEmail;
+	
 	public static MemberEntity toMemberEntity(MemberDTO memberDTO) {
 		MemberEntity memberEntity = new MemberEntity();
-		memberEntity.setMemberEmail(memberDTO.getMemberEmail());
+		
+		memberEntity.setMemberId(memberDTO.getMemberId());
 		memberEntity.setMemberPassword(memberDTO.getMemberPassword());
 		memberEntity.setMemberName(memberDTO.getMemberName());
+		memberEntity.setMemberPhone(memberDTO.getMemberPhone());
+		memberEntity.setMemberEmail(memberDTO.getMemberEmail());
 		
 		return memberEntity;
 	}

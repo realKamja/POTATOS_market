@@ -19,10 +19,10 @@ public class MemberService {
 	
 		// 1. 회원이 입력한 이메일로 DB에서 조회를 함
 		// 2. DB에서 조회한 비밀번호와 사용자가 입력한 비밀번호가 일치한지 판단
-		Optional<MemberEntity> byMemberEmail = memberRepository.findByMemberEmail(memberDTO.getMemberEmail());
-			if(byMemberEmail.isPresent()) {
+		Optional<MemberEntity> byMemberId = memberRepository.findByMemberId(memberDTO.getMemberId());
+			if(byMemberId.isPresent()) {
 				// 조회 결과가 있다(해당 이메일을 가진 회원 정보가 있다)
-				MemberEntity memberEntity = byMemberEmail.get(); // get을 통해 byMemberEntity에 씌워진 Optinal을 벗겨냄
+				MemberEntity memberEntity = byMemberId.get(); // get을 통해 byMemberEntity에 씌워진 Optinal을 벗겨냄
 				if(memberEntity.getMemberPassword().equals(memberDTO.getMemberPassword())) {
 					// 비밀번호가 일치 
 					// entity -> dto 변환 후 리턴
@@ -49,9 +49,9 @@ public class MemberService {
 		// repository의 save메서드 호출 (조건 entity객체를 넘겨줘야 함)
 	}
 	
-	public String emailCheck(String memberEmail) {
-		Optional<MemberEntity> byMemberEmail = memberRepository.findByMemberEmail(memberEmail);
-		if(byMemberEmail.isPresent()) {
+	public String IdCheck(String memberId) {
+		Optional<MemberEntity> byMemberId = memberRepository.findByMemberId(memberId);
+		if(byMemberId.isPresent()) {
 			// 조회결과가 있다 -> 중복된 memberEmail이다
 			return null;
 		}
