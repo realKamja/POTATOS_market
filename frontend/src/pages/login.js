@@ -5,6 +5,9 @@ function Login(){
     var routerSingUP=() => {
         navigator("/singup")
     };
+    var routerHome=()=>{
+        navigator("/main")
+    }
 
     return(
         <div className="login-container">
@@ -15,7 +18,7 @@ function Login(){
                 <label htmlFor="password">비밀번호:</label>
                 <input type="password" id="password" name="password" required/>
 
-                <button type="submit">로그인</button>
+                <button type="submit" onClick={routerHome}>로그인</button>
                 <button type="button" onClick={routerSingUP}>회원가입</button>
             </form>
         </div>

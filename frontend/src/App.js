@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Mapping from './pages/mapping';
 import Login from './pages/login';
 import SingUp from './pages/signUp';
+import Home from './pages/home';
 
 function App(){
     return(
@@ -12,6 +13,8 @@ function App(){
                 <Route path={"/"} element={<Mapping/>}></Route>
                 <Route path={"/login"} element={<Login/>}></Route>
                 <Route path={"/singup"} element={<SingUp/>}></Route>
+
+                <Route path={"/main"} element={<Home/>}></Route>
             </Routes>
         </BrowserRouter>
     );
