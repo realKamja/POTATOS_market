@@ -7,5 +7,9 @@
 <body>
 	<p>login success</p>
 	<a href="/member/logout">로그아웃</a>
+	
+	<p th:text="'Hello ' + ${session.loginId}"></p>
+	
+	<a href="/buyerform">구매</a>
 </body>
 </html>

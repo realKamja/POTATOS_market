@@ -36,7 +36,7 @@ public class MemberService {
 		
 			}
 			else {
-				// 조회 결과가 없다(해당 이메일을 가진 회원이 없다)
+				// 조회 결과가 없다(해당 아이디을 가진 회원이 없다)
 				return null;
 			}
 	}
@@ -58,6 +58,10 @@ public class MemberService {
 		else {
 			// 조회결과가 있다 -> 사용할 수 있다
 			return "ok";
-		}	
+		}
+	}
+	
+	public MemberEntity findByMemberId(String memberId) {
+		return memberRepository.findByMemberId(memberId).get();
 	}
 }

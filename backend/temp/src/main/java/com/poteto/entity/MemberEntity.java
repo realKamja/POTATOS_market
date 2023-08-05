@@ -8,19 +8,23 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Setter
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "member_table")
 public class MemberEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment
 	private Long id;
 	
-	@Column(unique = true) // unique 제약조건 추가
+	@Column //(unique = true) // unique 제약조건 추가
 	private String memberId;
 	
 	@Column
@@ -42,7 +46,6 @@ public class MemberEntity {
 		memberEntity.setMemberPassword(memberDTO.getMemberPassword());
 		memberEntity.setMemberName(memberDTO.getMemberName());
 		memberEntity.setMemberPhone(memberDTO.getMemberPhone());
-		memberEntity.setMemberEmail(memberDTO.getMemberEmail());
 		
 		return memberEntity;
 	}
