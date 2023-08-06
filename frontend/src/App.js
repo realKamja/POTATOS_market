@@ -4,6 +4,8 @@ import Mapping from './pages/mapping';
 import Login from './pages/login';
 import SingUp from './pages/signUp';
 import Home from './pages/home';
+import Mypage from './pages/mypage';
+import SalesTable from './pages/salesTable';
 
 function App(){
     return(
@@ -15,6 +17,8 @@ function App(){
                 <Route path={"/singup"} element={<SingUp/>}></Route>
 
                 <Route path={"/main"} element={<Home/>}></Route>
+                <Route path={"/main/mypage"} element={<Mypage/>}></Route>
+                <Route path={"/main/mypage/sales-table"} element={<SalesTable/>}></Route>
             </Routes>
         </BrowserRouter>
     );
