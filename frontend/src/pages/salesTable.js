@@ -1,13 +1,12 @@
 import {useEffect, useState} from 'react';
 import PostBox from '../components/post_box';
+import posts_json from '../example-json/posts-ex.json';
 
 function SalesTable(){
     var [posts, setPosts]=useState([]);
 
     useEffect(() => {
-        fetch('example-json/posts-ex.json')
-        .then(res => res.json())
-        .then(data => setPosts(data));
+        setPosts(posts_json);
     }, []);
 
     return(

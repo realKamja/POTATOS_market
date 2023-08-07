@@ -6,6 +6,7 @@ import SingUp from './pages/signUp';
 import Home from './pages/home';
 import Mypage from './pages/mypage';
 import SalesTable from './pages/salesTable';
+import PurchHistory from './pages/purchHistory';
 
 function App(){
     return(
@@ -19,6 +20,7 @@ function App(){
                 <Route path={"/main"} element={<Home/>}></Route>
                 <Route path={"/main/mypage"} element={<Mypage/>}></Route>
                 <Route path={"/main/mypage/sales-table"} element={<SalesTable/>}></Route>
+                <Route path={"/main/mypage/purchase-history"} element={<PurchHistory/>}></Route>
             </Routes>
         </BrowserRouter>
     );

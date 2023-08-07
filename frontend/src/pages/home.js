@@ -1,15 +1,14 @@
-import PostBox from '../components/post_box';
 import {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import PostBox from '../components/post_box';
+import posts_json from '../example-json/posts-ex.json';
 
 function Home(){
     // 게시물예시 json 가져오기
     var [posts, setPosts]=useState([]);
 
     useEffect(() => {
-        fetch('example-json/posts-ex.json')
-        .then(res => res.json())
-        .then(data => setPosts(data));
+        setPosts(posts_json);
     }, []);
 
     var navigator=useNavigate()
@@ -22,7 +21,7 @@ function Home(){
         <header>
             <div>
                 <button>상품 판매하기</button>
-                <button onclick={routerMyPage}>판매/구매 관리</button>
+                <button onClick={routerMyPage}>판매/구매 관리</button>
 
                 <div className="search-box">
                     <input type="text" placeholder="Search..."/>
