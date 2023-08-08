@@ -20,6 +20,7 @@ public class MemberDTO {
 	private String memberName;
 	private String memberPhone;
 	private String memberEmail;
+	private int verify;
 	
 	public static MemberDTO toMemberDTO(MemberEntity memberEntity) {
 		MemberDTO memberDTO = new MemberDTO();
@@ -30,7 +31,8 @@ public class MemberDTO {
 		memberDTO.setMemberName(memberEntity.getMemberName());
 		memberDTO.setMemberPhone(memberEntity.getMemberPhone());
 		memberDTO.setMemberEmail(memberEntity.getMemberEmail());
-		
+		memberDTO.setVerify(memberDTO.getVerify());
+
 		return memberDTO;
 	}
 }

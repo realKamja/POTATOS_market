@@ -21,7 +21,7 @@ public class MemberService {
 		// 2. DB에서 조회한 비밀번호와 사용자가 입력한 비밀번호가 일치한지 판단
 		Optional<MemberEntity> byMemberId = memberRepository.findByMemberId(memberDTO.getMemberId());
 			if(byMemberId.isPresent()) {
-				// 조회 결과가 있다(해당 이메일을 가진 회원 정보가 있다)
+				// 조회 결과가 있다(해당 아이디를 가진 회원 정보가 있다)
 				MemberEntity memberEntity = byMemberId.get(); // get을 통해 byMemberEntity에 씌워진 Optinal을 벗겨냄
 				if(memberEntity.getMemberPassword().equals(memberDTO.getMemberPassword())) {
 					// 비밀번호가 일치 
@@ -63,5 +63,12 @@ public class MemberService {
 	
 	public MemberEntity findByMemberId(String memberId) {
 		return memberRepository.findByMemberId(memberId).get();
+	}
+
+	public boolean isAdmin(String loginId){
+		if(findByMemberId(loginId).getVerify() == 9){ //verify가 9이면 관리자이다
+			return true;
+		}
+		else{ return false;}
 	}
 }

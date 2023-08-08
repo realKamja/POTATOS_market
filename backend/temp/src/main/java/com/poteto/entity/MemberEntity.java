@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Setter
@@ -24,7 +25,7 @@ public class MemberEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment
 	private Long id;
 	
-	@Column //(unique = true) // unique 제약조건 추가
+	@Column (unique = true) // unique 제약조건 추가
 	private String memberId;
 	
 	@Column
@@ -38,6 +39,9 @@ public class MemberEntity {
 	
 	@Column
 	private String memberEmail;
+
+	@ColumnDefault("0")
+	private int verify;
 	
 	public static MemberEntity toMemberEntity(MemberDTO memberDTO) {
 		MemberEntity memberEntity = new MemberEntity();
@@ -46,6 +50,7 @@ public class MemberEntity {
 		memberEntity.setMemberPassword(memberDTO.getMemberPassword());
 		memberEntity.setMemberName(memberDTO.getMemberName());
 		memberEntity.setMemberPhone(memberDTO.getMemberPhone());
+		memberEntity.setMemberEmail(memberDTO.getMemberEmail());
 		
 		return memberEntity;
 	}

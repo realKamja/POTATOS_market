@@ -48,9 +48,15 @@ public class MemberController {
 						@RequestParam("memberName") String memberName) {
 						*/
 	public String signin(@ModelAttribute MemberDTO memberDTO) {
-		memberService.signin(memberDTO);
-		
-		return "login";
+	    String checkResult = memberService.IdCheck(memberDTO.getMemberId());
+	    
+	    if (checkResult!=null && checkResult.equals("ok")) {
+	        memberService.signin(memberDTO);
+	        return "login";
+	    } else {
+	        // 중복 아이디가 이미 존재하는 경우에 대한 처리
+	    	return "redirect:/member/signin"; // 회원가입 페이지로 리다이렉트
+	    }
 	}
 	
 	@GetMapping("/member/logout")

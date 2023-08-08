@@ -3,11 +3,9 @@ package com.poteto.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.poteto.dto.BuyerDTO;
-import com.poteto.dto.MemberDTO;
 import com.poteto.entity.MemberEntity;
 import com.poteto.sevice.BuyerService;
 import com.poteto.sevice.MemberService;
@@ -29,7 +27,7 @@ public class BuyController {
 	}
 	
 	@PostMapping("/buyform")
-	public String buyInformationSave(@ModelAttribute BuyerDTO buyerDTO, HttpSession session) {
+	public String buyInformationSave(BuyerDTO buyerDTO, HttpSession session) {
 		String loggedInUsername = (String) session.getAttribute("loginId");
 	    MemberEntity loggedInMember = memberService.findByMemberId(loggedInUsername);
 
