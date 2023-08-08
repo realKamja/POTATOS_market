@@ -13,10 +13,10 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class MemberService {
+	
 	private final MemberRepository memberRepository;
 	
 	public MemberDTO login(MemberDTO memberDTO) {
-	
 		// 1. 회원이 입력한 이메일로 DB에서 조회를 함
 		// 2. DB에서 조회한 비밀번호와 사용자가 입력한 비밀번호가 일치한지 판단
 		Optional<MemberEntity> byMemberId = memberRepository.findByMemberId(memberDTO.getMemberId());
