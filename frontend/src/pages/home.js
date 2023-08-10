@@ -12,15 +12,18 @@ function Home(){
     }, []);
 
     var navigator=useNavigate()
+    var routerResisterStore = () => {
+        navigator("/main/register-store/img-upload");
+    }
     var routerMyPage = () => {
-        navigator("/main/mypage")
+        navigator("/main/mypage");
     };
 
     return(
         <div className="homepage">
         <header>
             <div>
-                <button>상품 판매하기</button>
+                <button onClick={routerResisterStore}>상품 판매하기</button>
                 <button onClick={routerMyPage}>판매/구매 관리</button>
 
                 <div className="search-box">
