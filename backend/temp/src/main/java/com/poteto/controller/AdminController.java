@@ -17,13 +17,16 @@ public class AdminController {
 
     @GetMapping()
     public String adminPage(HttpSession session){
-        boolean isAdmin = memberService.isAdmin((String) session.getAttribute("loginId"));
-        if (isAdmin == true){
-            return "admin_main";
+        try {
+            boolean isAdmin = memberService.isAdmin((String) session.getAttribute("loginId"));
+            if (isAdmin == true) { // 로그인된 관리자 접근시
+                return "admin_main";
+            }
+        } catch(Exception e){ // 로그인되지 않은 사용자 접근시
+            e.getMessage();
+            return "no_access";
         }
-        else {
-            return "redirect:/";
-        }
+        return "no_access"; // 로그인된 일반 사용자 접근시
     }
 
 }
