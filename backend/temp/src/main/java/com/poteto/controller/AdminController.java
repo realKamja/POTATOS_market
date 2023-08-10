@@ -22,7 +22,7 @@ public class AdminController {
             return "admin_main";
         }
         else {
-            return "redirect:/main";
+            return "redirect:/";
         }
     }
 
