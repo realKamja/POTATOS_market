@@ -1,7 +1,10 @@
 package com.poteto.sevice;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import com.poteto.dto.MemberForAdminDTO;
 import org.springframework.stereotype.Service;
 
 import com.poteto.dto.MemberDTO;
@@ -67,8 +70,14 @@ public class MemberService {
 
 	public boolean isAdmin(String loginId){
 		if(findByMemberId(loginId).getVerify() == 9){ //verify가 9이면 관리자이다
-			return true;
+			return true; //관리자이면 true반환
 		}
 		else{ return false;}
+	}
+
+	public List<MemberForAdminDTO> membersForAdmin(){
+		List<MemberEntity> entityList = memberRepository.findAll();
+		List<MemberForAdminDTO> memberForAdmindDtoList = entityList.stream().map(memberEntity -> new MemberForAdminDTO(memberEntity)).collect(Collectors.toList());
+		return memberForAdmindDtoList;
 	}
 }
