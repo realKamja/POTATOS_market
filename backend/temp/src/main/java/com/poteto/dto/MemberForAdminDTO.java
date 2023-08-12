@@ -3,7 +3,6 @@ package com.poteto.dto;
 import com.poteto.entity.MemberEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 @Getter //Dto->Json을 하는 @ResponseBody가 사용
 @NoArgsConstructor
