@@ -103,6 +103,7 @@ function SingUp(){
                     required
                 />
 
+                <button type="submit">회원가입</button>
             </form>
         </div>
     );

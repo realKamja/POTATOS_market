@@ -66,21 +66,6 @@ function Login(){
           </form>
         </div>
       );
-    // return(
-    //     <div className="login-container">
-    //         <form action="http://localhost:8080/member/login" method="post">
-    //             <label htmlFor="username">아이디:</label>
-    //             <input type="text" name="memberId" required/>
-
-    //             <label htmlFor="password">비밀번호:</label>
-    //             <input type="password" name="memberPassword" required/>
-            
-    //             <button type="submit" onClick={routerHome}>로그인</button>
-    //             <button type="button" onClick={routerSingUP}>회원가입</button>
-    //         </form>
-
-    //     </div>
-    // )
 }
 
 export default Login;
