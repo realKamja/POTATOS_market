@@ -18,17 +18,17 @@ public class AdminController {
     private final MemberService memberService;
 
     @GetMapping()
-    public String adminPage(HttpSession session){
+    public boolean adminPage(HttpSession session){
         try {
             boolean isAdmin = memberService.isAdmin((String) session.getAttribute("loginId"));
-            if (isAdmin == true) { // 로그인된 관리자 접근시
-                return "/admin/main"; //관리자 메인 페이지 주소 반환(아직 구현 안함)
+            if (isAdmin == true) { // 로그인된 관리자 접근시 true httpbody에 true반환
+                return true;
             }
         } catch(Exception e){ // 로그인되지 않은 사용자 접근시
             e.getMessage();
-            return "/main"; //(메인페이지 아직 구현 안함)
+            return false;
         }
-        return "/main"; // 로그인된 일반 사용자 접근시
+        return false; // 로그인된 일반 사용자 접근시
     }
 
     @GetMapping("/members")

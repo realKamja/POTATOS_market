@@ -13,3 +13,5 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
 }
+
+// 프론트와의 연경을 위한 Spring CORS설정

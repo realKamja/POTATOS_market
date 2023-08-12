@@ -54,7 +54,7 @@ public class MemberController {
 			return "success"; //회원가입 성공
 		} else {
 			// 중복 아이디가 이미 존재하는 경우에 대한 처리
-			return "fail"; // 회원가입 페이지로 리다이렉트
+			return "fail"; // 회원가입 실패
 		}
 	}
 
