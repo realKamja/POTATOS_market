@@ -44,7 +44,7 @@ public class BuyerEntity {
 	
 	public static BuyerEntity toBuyerEntity(BuyerDTO buyerDTO) {
 		BuyerEntity buyerEntity = new BuyerEntity();
-		
+		buyerEntity.setId(buyerDTO.getId());
 		buyerEntity.setBuyerAmount(buyerDTO.getBuyerAmount());
 		buyerEntity.setBuyerBank(buyerDTO.getBuyerBank());
 		buyerEntity.setBuyerAccount(buyerDTO.getBuyerAccount());

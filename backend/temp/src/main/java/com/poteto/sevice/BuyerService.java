@@ -3,7 +3,6 @@ package com.poteto.sevice;
 import org.springframework.stereotype.Service;
 
 import com.poteto.dto.BuyerDTO;
-import com.poteto.dto.MemberDTO;
 import com.poteto.entity.BuyerEntity;
 import com.poteto.entity.MemberEntity;
 import com.poteto.repository.BuyerRepository;

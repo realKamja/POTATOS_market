@@ -25,7 +25,7 @@ public class MemberEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment
 	private Long id;
 	
-	@Column //(unique = true) // unique 제약조건 추가
+	@Column (unique = true) // unique 제약조건 추가
 	private String memberId;
 	
 	@Column
@@ -50,6 +50,8 @@ public class MemberEntity {
 		memberEntity.setMemberPassword(memberDTO.getMemberPassword());
 		memberEntity.setMemberName(memberDTO.getMemberName());
 		memberEntity.setMemberPhone(memberDTO.getMemberPhone());
+		memberEntity.setMemberEmail(memberDTO.getMemberEmail());
+
 		return memberEntity;
 	}
 }
