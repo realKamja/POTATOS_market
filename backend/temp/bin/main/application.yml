@@ -10,6 +10,9 @@ spring:
     password: 6907
   thymeleaf:
     cache: false
+  web:
+    resources:
+      static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:src/main/resources/static/
 
   # spring data jpa 설정
   jpa:

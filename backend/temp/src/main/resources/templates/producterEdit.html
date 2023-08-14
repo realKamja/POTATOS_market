@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Product</title>
+</head>
+<body>
+    <h1>Edit Product</h1>
+    <form action="/producterform" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" th:value="${producter.id}">
+
+        제목: <input type="text" name="producterTitle"> <br>
+        내용: <input type="text" name="producterDetail"> <br>
+        이름: <input type="text" name="producterName"> <br>
+        종류: <input type="text" name="category"> <br>
+        판매 가격: <input type="text" name="producterPrice"> <br>
+        수량: <input type="text" name="producterAmount"> <br>
+        계좌번호: <input type="text" name="producterAccount"> <br>
+        은행선택: <input type="text" name="producterBank"> <br>
+        
+        이미지 업로드: <input type="file" name="imageFile" accept="image/*"> <br>
+        
+        <input type="submit" value="제출">
+        <a href="/main">Back</a>
+    </form>
+</body>
+</html>

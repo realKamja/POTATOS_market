@@ -25,7 +25,7 @@ public class BuyerDTO {
 	
 	public static BuyerDTO toBuyerDTO(BuyerEntity buyerEntity) {
 		BuyerDTO buyerDTO = new BuyerDTO();
-		
+
 		buyerDTO.setId(buyerEntity.getId());
 		buyerDTO.setBuyerAmount(buyerEntity.getBuyerAmount());
 		buyerDTO.setBuyerBank(buyerEntity.getBuyerBank());

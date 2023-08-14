@@ -23,7 +23,7 @@ import org.hibernate.annotations.ColumnDefault;
 public class MemberEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment
-	private Long id;
+	private long id;
 	
 	@Column (unique = true) // unique 제약조건 추가
 	private String memberId;
