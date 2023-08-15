@@ -58,3 +58,13 @@ button:focus {
 .material-ui{
     cursor: pointer;
 }
+
+/* 중간중간 들어가는 꾸밈 띠 */
+.deco-farmFrash{
+    width: 98vw;
+
+    overflow: hidden;
+}
+.deco-farmFrash span{
+    white-space: nowrap;
+}

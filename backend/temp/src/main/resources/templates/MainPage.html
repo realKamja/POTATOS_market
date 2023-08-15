@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>main</title>
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/main.css?after">
 </head>
 <body>
     <div class="homepage">
@@ -18,15 +18,14 @@
                     onclick="handleLogout"
                 />
             </div>
-c
             <div class="button-container">
-                <button id="selling-b" onclick="redirectToRegisterStore()">상품 판매하기</button>
-                <button id="mypage-b" onclick="redirectToMyPage()">판매/구매 관리</button>
+                <button id="selling-b" onclick="redirectToRegisterStore">상품 판매하기</button>
+                <button id="mypage-b" onclick="redirectToMyPage">판매/구매 관리</button>
             </div>
 
             <div class='bottom-container'>
                 <img 
-                    class="material-ui" id="down-arrow" 
+                    class="material-ui" id="down-arrow"
                     src="/imgs/gg_arrow-down-o.svg" alt="next page of main"
                     title="상품 구경하러 가기"
                     onclick="scrollToShowcase()"
@@ -34,18 +33,22 @@ c
             </div>
         </div>
 
+        <div class="deco-farmFrash">
+            <span>FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASHFARM FRASH FARM FRASH FARM FRASH FARM FRASH</span>
+        </div>
+
         <div class="showcase">
             <div class="search-box">
-                <img class="material-ui" src="imgs/material-symbols_search.svg" alt="search button" title="검색하기"/>
+                <img class="material-ui" src="/imgs/material-symbols_search.svg" alt="search button" title="검색하기"/>
                 <input type="text" placeholder="검색어를 입력하세요..."/>
             </div>
             <div class="category-filter">
                 <button>더 많은 상품분류</button>
             </div>
-        
+
             <!-- 상품 게시판 -->
             <section class="post-container">
-                <!-- Rendered PostBox components will go here -->
+
             </section>
         </div>
         <a href="/saleform">판매</a>
@@ -54,18 +57,6 @@ c
     </div>
 
     <script>
-        function handleLogout() {
-            // Implement logout functionality here using Axios or other methods
-        }
-
-        function redirectToRegisterStore() {
-            window.location.href = "/main/register-store/img-upload";
-        }
-
-        function redirectToMyPage() {
-            window.location.href = "/main/mypage";
-        }
-
         function scrollToShowcase() {
             window.scroll({top: window.innerHeight, behavior: "smooth"});
         }

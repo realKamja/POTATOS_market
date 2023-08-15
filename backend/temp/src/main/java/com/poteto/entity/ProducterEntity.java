@@ -55,7 +55,7 @@ public class ProducterEntity {
 	
 	@ManyToOne // 다대일 관계 설정
 	@JoinColumn(name = "logged_in_member_id") // 외래키 설정
-	private MemberEntity LoggedInMember; // 로그인된 사용자 아이디
+	private MemberEntity loggedInMember; // 로그인된 사용자 아이디
 	
 	public ProducterDTO toDTO(ProducterEntity producterEntity) {
 		
@@ -101,7 +101,7 @@ public class ProducterEntity {
 			this.ProducterImage = producterEntity.ProducterImage;
 		}
 		if(producterEntity.ProducterBank != null) {
-			this.LoggedInMember = producterEntity.LoggedInMember;
+			this.loggedInMember = producterEntity.loggedInMember;
 		}
 	}
 }

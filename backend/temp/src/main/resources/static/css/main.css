@@ -1,10 +1,10 @@
-@import "./style.css";
+@import "./style.css?after";
 
 /* 커버(첫페이지) */
 .homepage .cover{
     height: 100vh;
 
-    background-image: url("../../../public/imgs/main_background.png");
+    background-image: url("../imgs/main_background.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
