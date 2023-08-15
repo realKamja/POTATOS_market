@@ -1,0 +1,17 @@
+@import "./style.css";
+
+input:invalid + span::after {
+    content: "✖";
+    padding-left: 5px;
+    color: #8b0000;
+}
+
+input:valid + span::after {
+    content: "✓";
+    padding-left: 5px;
+    color: #009000;
+}
+
+input:valid + span + small {
+    display: none;
+}

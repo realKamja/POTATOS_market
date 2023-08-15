@@ -5,7 +5,7 @@
 	<title>buyform</title>
 </head>
 <body>
-	<form th:action="@{/main/sale/{id}/buyform(id=${producter.id})}" method="post">
+	<form th:action="@{/main/sale/{id}/purchaseform(id=${producter.id})}" method="post">
 		<!--<input type="hidden" name="id" th:value="${producter.id}">-->
 		
 		구매량: <input type="text" name="BuyerAmount"> <br>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main</title>
+    <link rel="stylesheet" href="/css/main.css?after">
+</head>
+<body>
+    <div class="homepage">
+        <div class="cover">
+            <div class="top-container">
+                <p th:text="'Hello ' + ${session.loginId}"></p>
+                <img 
+                    class="material-ui" 
+                    src="/imgs/material-symbols_logout.svg" alt="logout-button" 
+                    title="로그아웃하기"
+                    onclick="handleLogout"
+                />
+            </div>
+            <div class="button-container">
+                <button id="selling-b" onclick="redirectToRegisterStore">상품 판매하기</button>
+                <button id="mypage-b" onclick="redirectToMyPage">판매/구매 관리</button>
+            </div>
+
+            <div class='bottom-container'>
+                <img 
+                    class="material-ui" id="down-arrow"
+                    src="/imgs/gg_arrow-down-o.svg" alt="next page of main"
+                    title="상품 구경하러 가기"
+                    onclick="scrollToShowcase()"
+                />
+            </div>
+        </div>
+
+        <div class="deco-farmFrash">
+            <span>FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASHFARM FRASH FARM FRASH FARM FRASH FARM FRASH</span>
+        </div>
+
+        <div class="showcase">
+            <div class="search-box">
+                <img class="material-ui" src="/imgs/material-symbols_search.svg" alt="search button" title="검색하기"/>
+                <input type="text" placeholder="검색어를 입력하세요..."/>
+            </div>
+            <div class="category-filter">
+                <button>더 많은 상품분류</button>
+            </div>
+        
+            <!-- 상품 게시판 -->
+            <section class="post-container">
+
+            </section>
+        </div>
+        <a href="/saleform">판매</a>
+        <a href="/mypage">마이페이지</a>
+        <a href="/admin">관리자페이지</a>
+    </div>
+
+    <script>
+        function scrollToShowcase() {
+            window.scroll({top: window.innerHeight, behavior: "smooth"});
+        }
+    </script>
+</body>
+</html>
