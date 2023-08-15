@@ -1,5 +1,7 @@
 package com.poteto.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.poteto.entity.MemberEntity;
 import com.poteto.entity.ProducterEntity;
 
 import lombok.AllArgsConstructor;
@@ -31,6 +33,11 @@ public class ProducterDTO {
 	
 	private String ProducterBank;
 	
+	private String ProducterImage;
+	
+	@JsonProperty("logged_in_member_id")
+	private MemberEntity LoggedInMember;
+	
 	public ProducterEntity toEntity(ProducterDTO ProducterDTO) {
 		
 		ProducterEntity producterEntity = new ProducterEntity();
@@ -43,6 +50,8 @@ public class ProducterDTO {
 		producterEntity.setProducterPrice(ProducterDTO.getProducterPrice());
 		producterEntity.setProducterAmount(ProducterDTO.getProducterAmount());
 		producterEntity.setProducterBank(ProducterDTO.getProducterBank());
+		producterEntity.setProducterImage(ProducterDTO.getProducterImage());
+		producterEntity.setLoggedInMember(ProducterDTO.getLoggedInMember());
 		
 		return producterEntity;
 	}

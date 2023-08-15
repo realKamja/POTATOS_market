@@ -17,8 +17,12 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.poteto.dto.ProducterDTO;
+import com.poteto.entity.MemberEntity;
 import com.poteto.entity.ProducterEntity;
 import com.poteto.repository.ProducterRepository;
+import com.poteto.sevice.MemberService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class ProducterController {
@@ -26,13 +30,20 @@ public class ProducterController {
 	@Autowired
 	private ProducterRepository producterRepository;
 	
-	@GetMapping("/producterform")
-	public String newArticleForm() {
-		return "producterform";
+	@Autowired
+	private MemberService memberService;
+	
+	@GetMapping("/saleform")
+	public String slaeform() {
+		return "SaleForm";
 	}
 	
-	@PostMapping("/producterform")
-	public String createAricle(ProducterDTO form, @RequestParam("imageFile") MultipartFile imageFile) {
+	@PostMapping("/saleform")
+	public String createSlaeForm(ProducterDTO form, @RequestParam("ImageFile") MultipartFile imageFile, HttpSession session) {
+		
+		// 로그인한 멤버 정보 가져오기
+		String loggedInUsername = (String) session.getAttribute("loginId");
+	    MemberEntity loggedInMember = memberService.findByMemberId(loggedInUsername);
 		
 		ProducterEntity producterEntity = form.toEntity(form);
 		
@@ -48,44 +59,63 @@ public class ProducterController {
 	        }
 	    }
 		
+		producterEntity.setLoggedInMember(loggedInMember);
 		ProducterEntity saved = producterRepository.save(producterEntity);
 		
-		return "redirect:/main/" + saved.getId();
+		return "redirect:/main/sale/" + saved.getId();
 	}
 	
-	@GetMapping("/main/{id}")
+	@GetMapping("/main/sale/{id}")
 	public String show(@PathVariable Long id, Model model) {
 		
 		ProducterEntity producterEntity = producterRepository.findById(id).orElse(null);
 		
 		model.addAttribute("producter", producterEntity);
 		
-		return "producterShow";
+		return "SaleShow";
 	}
 	
-	@GetMapping("/main/{id}/edit")
+	@GetMapping("/main/sale/{id}/edit")
 	public String edit(@PathVariable Long id, Model model) {
 		
 		ProducterEntity producterEntity = producterRepository.findById(id).orElse(null);
 
 		model.addAttribute("producter", producterEntity);
-		return "producterEdit";
+		return "SaleEdit";
 	}
 	
-	@PostMapping("/main/update")
-	public String update(ProducterDTO form) {
+	@PostMapping("/main/sale/{id}/update")
+	public String update(ProducterDTO form, @RequestParam("ImageFile") MultipartFile imageFile, HttpSession session) {
+
+		// 로그인한 멤버 정보 가져오기
+		String loggedInUsername = (String) session.getAttribute("loginId");
+		MemberEntity loggedInMember = memberService.findByMemberId(loggedInUsername);
 		
 		ProducterEntity producterEntity = form.toEntity(form);
+		
+		if (!imageFile.isEmpty()) {
+	        String fileName = imageFile.getOriginalFilename();
+	        producterEntity.setProducterImage(fileName);
+
+	        try {
+	            Path filePath = Paths.get("src/main/resources/static/images/" + fileName);
+	            Files.copy(imageFile.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
+		
+		producterEntity.setLoggedInMember(loggedInMember);
 		
 		ProducterEntity target = producterRepository.findById(producterEntity.getId()).orElse(null);
 		if(target != null) {
 			producterRepository.save(producterEntity);
 		}
 		
-		return "redirect:/main/" + producterEntity.getId();
+		return "redirect:/main/sale/" + producterEntity.getId();
 	}
 	
-	@GetMapping("/main/{id}/delete")
+	@GetMapping("/main/sale/{id}/delete")
 	public String delete(@PathVariable Long id, RedirectAttributes rttr) {
 		
 		ProducterEntity target = producterRepository.findById(id).orElse(null);

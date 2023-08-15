@@ -1,7 +1,9 @@
 package com.poteto.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.poteto.entity.BuyerEntity;
 import com.poteto.entity.MemberEntity;
+import com.poteto.entity.ProducterEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,9 +21,13 @@ public class BuyerDTO {
 	private String BuyerAmount;
 	private String BuyerBank;
 	private String BuyerAccount;
-	private String Buyeraddress;
+	private String BuyerAddress;
 	
-	private MemberEntity loggedInMember;
+	@JsonProperty("sale_id")
+	private ProducterEntity SaleId;
+	
+	@JsonProperty("logged_in_member_id")
+	private MemberEntity LoggedInMember;
 	
 	public static BuyerDTO toBuyerDTO(BuyerEntity buyerEntity) {
 		BuyerDTO buyerDTO = new BuyerDTO();
@@ -30,7 +36,9 @@ public class BuyerDTO {
 		buyerDTO.setBuyerAmount(buyerEntity.getBuyerAmount());
 		buyerDTO.setBuyerBank(buyerEntity.getBuyerBank());
 		buyerDTO.setBuyerAccount(buyerEntity.getBuyerAccount());
-		buyerDTO.setBuyeraddress(buyerEntity.getBuyeraddress());
+		buyerDTO.setBuyerAddress(buyerEntity.getBuyerAddress());
+		buyerDTO.setSaleId(buyerEntity.getSaleId());
+		buyerDTO.setLoggedInMember(buyerEntity.getLoggedInMember());
 		
 		return buyerDTO;
 	}
