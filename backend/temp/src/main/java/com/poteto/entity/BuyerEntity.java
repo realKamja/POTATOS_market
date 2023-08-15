@@ -36,11 +36,15 @@ public class BuyerEntity {
 	private String BuyerAccount;
 	
 	@Column
-	private String Buyeraddress;
+	private String BuyerAddress;
+	
+	@ManyToOne // 다대일 관계 설정
+	@JoinColumn(name = "sale_id") // 외래키 설정
+	private ProducterEntity SaleId ; // 판매 게시판 아이디
 	
 	@ManyToOne // 다대일 관계 설정
 	@JoinColumn(name = "logged_in_member_id") // 외래키 설정
-	private MemberEntity loggedInMember; // 로그인된 사용자 아이디
+	private MemberEntity LoggedInMember; // 로그인된 사용자 아이디
 	
 	public static BuyerEntity toBuyerEntity(BuyerDTO buyerDTO) {
 		BuyerEntity buyerEntity = new BuyerEntity();
@@ -48,7 +52,9 @@ public class BuyerEntity {
 		buyerEntity.setBuyerAmount(buyerDTO.getBuyerAmount());
 		buyerEntity.setBuyerBank(buyerDTO.getBuyerBank());
 		buyerEntity.setBuyerAccount(buyerDTO.getBuyerAccount());
-		buyerEntity.setBuyeraddress(buyerDTO.getBuyeraddress());
+		buyerEntity.setBuyerAddress(buyerDTO.getBuyerAddress());
+		buyerEntity.setBuyerAccount(buyerDTO.getBuyerAccount());
+		buyerEntity.setSaleId(buyerDTO.getSaleId());
 		buyerEntity.setLoggedInMember(buyerDTO.getLoggedInMember());
 		
 		return buyerEntity;
