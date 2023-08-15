@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import com.poteto.dto.MemberDTO;
 import com.poteto.sevice.MemberService;
 
+import ch.qos.logback.core.model.Model;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
@@ -32,13 +33,11 @@ public class MemberController {
 		}
 	}
 
-	/* rest api 에서는 프론트의 영역
 	// 회원가입 페이지 출력 요청
-	@GetMapping("/member/signin")
-	public String saveForm() {
+	@RequestMapping("/member/signin")
+	public String saveForm(Model model) {
 		return "signin";
 	}
-	 */
 
 	@PostMapping("/member/signin")
 	/*
@@ -68,7 +67,8 @@ public class MemberController {
 	}
 
 	@GetMapping("/member/logout")
-	public void logout(HttpSession session) {
+	public String logout(HttpSession session) {
 		session.invalidate();
+		return "login";
 	}
 }
