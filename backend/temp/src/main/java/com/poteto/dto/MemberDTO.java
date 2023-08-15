@@ -1,12 +1,7 @@
 package com.poteto.dto;
 
 import com.poteto.entity.MemberEntity;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Setter
@@ -14,7 +9,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class MemberDTO {
-	private Long id;
+	private long id;
 	private String memberId;
 	private String memberPassword;
 	private String memberName;

@@ -1,15 +1,14 @@
 package com.poteto.sevice;
 
-import org.springframework.stereotype.Service;
-
 import com.poteto.dto.BuyerDTO;
-import com.poteto.dto.MemberDTO;
 import com.poteto.entity.BuyerEntity;
 import com.poteto.entity.MemberEntity;
 import com.poteto.repository.BuyerRepository;
-
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -31,5 +30,9 @@ public class BuyerService {
 
 	    // repository의 save메서드 호출 (조건 entity객체를 넘겨줘야 함)
 	    buyerRepository.save(buyerEntity);
+	}
+
+	public List<BuyerEntity> allBuyerList(){
+		return buyerRepository.findAll();
 	}
 }

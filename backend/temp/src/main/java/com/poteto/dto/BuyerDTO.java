@@ -2,12 +2,7 @@ package com.poteto.dto;
 
 import com.poteto.entity.BuyerEntity;
 import com.poteto.entity.MemberEntity;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Setter
@@ -25,7 +20,7 @@ public class BuyerDTO {
 	
 	public static BuyerDTO toBuyerDTO(BuyerEntity buyerEntity) {
 		BuyerDTO buyerDTO = new BuyerDTO();
-		
+
 		buyerDTO.setId(buyerEntity.getId());
 		buyerDTO.setBuyerAmount(buyerEntity.getBuyerAmount());
 		buyerDTO.setBuyerBank(buyerEntity.getBuyerBank());

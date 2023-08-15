@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Show</title>
+    <script
+            src="https://code.jquery.com/jquery-3.6.3.min.js"
+            integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1 th:text="${producter.ProducterTitle}"></h1>
+	<p th:text="${producter.ProducterDetail}"></p>
+
+	<img th:src="@{/images/{producterImage}(producterImage=${producter.producterImage})}" alt="Product Image">
+
+	<div th:if="${editAccess==true}"><a th:href="@{/main/{id}/delete(id=${producter.id})}">글삭제</a></div> <br>
+	<div th:if="${editAccess==true}"><a th:href="@{/main/{id}/edit(id=${producter.id})}">수정</a></div> <br>
+    <div th:if="${isAdmin==true}"><input type="button" value="검토" onclick="adminGoOver()"/></div>
+    <a th:href="@{/main}">Back</a>
+</body>
+
+<script th:inline="javascript">
+
+
+    function adminGoOver(){
+        $.ajax({
+            method: "patch",
+            url: window.location.pathname
+        })
+           .done(function(){
+                alert("검토완료 되었습니다");
+        })
+            .fail(function (errorThrown){
+                alert("오류가 발생했습니다 " + errorThrown);
+            });
+    }
+</script>
+</html>

@@ -1,15 +1,7 @@
 package com.poteto.entity;
 
 import com.poteto.dto.BuyerDTO;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,10 +33,12 @@ public class BuyerEntity {
 	@ManyToOne // 다대일 관계 설정
 	@JoinColumn(name = "logged_in_member_id") // 외래키 설정
 	private MemberEntity loggedInMember; // 로그인된 사용자 아이디
+
 	
 	public static BuyerEntity toBuyerEntity(BuyerDTO buyerDTO) {
 		BuyerEntity buyerEntity = new BuyerEntity();
 		
+		buyerEntity.setId(buyerDTO.getId());
 		buyerEntity.setBuyerAmount(buyerDTO.getBuyerAmount());
 		buyerEntity.setBuyerBank(buyerDTO.getBuyerBank());
 		buyerEntity.setBuyerAccount(buyerDTO.getBuyerAccount());
