@@ -1,0 +1,27 @@
+<!-- MyPage.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Page</title>
+</head>
+<body>
+    <h1>Welcome to My Page</h1>
+    
+    <h2>My Producters</h2>
+    <ul>
+        <li th:each="producter : ${producterList}">
+            <p th:text="${producter.producterTitle}"></p>
+            <!-- 추가적인 정보 표시 -->
+        </li>
+    </ul>
+    
+    <h2>My Buyers</h2>
+    <ul>
+        <li th:each="buyer : ${buyerList}">
+            <p th:text="${buyer.buyerAmount}"></p>
+            <!-- 추가적인 정보 표시 -->
+        </li>
+    </ul>
+</body>
+</html>

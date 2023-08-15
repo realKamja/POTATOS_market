@@ -11,9 +11,7 @@ import com.poteto.entity.ProducterEntity;
 import com.poteto.repository.ProducterRepository;
 
 import jakarta.transaction.Transactional;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Service
 public class ProducterService {
 	@Autowired
@@ -42,12 +40,10 @@ public class ProducterService {
 	public ProducterEntity update(Long id, ProducterDTO dto) {
 		
 		ProducterEntity article = dto.toEntity(dto);
-		log.info("id: {}, article: {}", id, article.toString());
 		
 		ProducterEntity target = producterRepository.findById(id).orElse(null);
 		
 		if(target==null || id!=article.getId()) {
-			log.info("This is an invalid request. id: {}, article: {}", id, article.toString());
 			return null;
 		}
 		
