@@ -7,7 +7,7 @@ spring:
     url: jdbc:mysql://localhost:3306/potatoMarket?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8&useSSL=true
 #    mysql에 생성한 사용자 계정 정보를 써야 합니다.
     username: root
-    password: developerchaewon13!
+    password: jdypass1!
   thymeleaf:
     cache: false
 

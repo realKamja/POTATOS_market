@@ -14,29 +14,30 @@ import com.poteto.sevice.MemberService;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
-public class BuyController {
+public class BuyerController {
 	
 	// 생성자 주입
 	private final BuyerService buyerService; // -> service클레스에 있는 자원을 사용할 권한을 줌
 	private final MemberService memberService; // -> service클레스에 있는 자원을 사용할 권한을 줌
-	
+
+	/* rest api 프론트의 영역
 	@GetMapping("/buyerform")
 	public String buyerform(){
 		return "buyform";
 	}
+	 */
 	
 	@PostMapping("/buyform")
-	public String buyInformationSave(BuyerDTO buyerDTO, HttpSession session) {
+	public void buyInformationSave(BuyerDTO buyerDTO, HttpSession session) {
 		String loggedInUsername = (String) session.getAttribute("loginId");
 	    MemberEntity loggedInMember = memberService.findByMemberId(loggedInUsername);
 
 	    buyerDTO.setLoggedInMember(loggedInMember);
 
 	    buyerService.buyInformationSave(buyerDTO, session);
-
-	    return "main";
 	}
 }
