@@ -2,24 +2,103 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>producterform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProdForm</title>
+    <link rel="stylesheet" href="/css/saleform.css">
 </head>
 <body>
+    <h1 class="form-title">상품 등록하기</h1>
+
     <form action="/main/saleform" method="post" enctype="multipart/form-data">
-        제목: <input type="text" name="ProducterTitle"> <br>
-        내용: <input type="text" name="ProducterDetail"> <br>
+        <label class="form-label" for="ProducterTitle">판매글 제목</label>
+        <div class="form-input-item">
+            <input 
+                type="text" 
+                name="ProducterTitle"
+                id="ProducterTitle"
+                required
+            />
+        </div>
+        <label class="form-label" for="ProducterName">상품 이름</label>
+        <div class="form-input-item">
+            <input 
+                type="text" 
+                name="ProducterName"
+                id="ProducterName"
+                required
+            />
+            <!-- TODO 분류가 어느게 있는지 몰라 적기 어려움 -->
+            <label for="Category">상품 종류</label>
+            <input 
+                type="text" 
+                name="Category"
+                id="Category"
+                required
+            />
+        </div>
+
+        <!-- TODO 사진 추가 방법 -->
+        <label class="form-label" for="ImageFile">상품 사진 등록</label>
+        <div class="form-input-item">
+            <input 
+                type="file" 
+                name="ImageFile" accept="image/*"
+                id="ImageFile"
+                required
+            />
+        </div>
+
+        <!-- TODO 개/kg/g/묶음 당 가격이라고 명시하기 -->
+        <label class="form-label" for="ProducterPrice">판매 가격</label>
+        <div class="form-input-item">
+            <input 
+                type="text" 
+                name="ProducterPrice"
+                id="ProducterPrice"
+                required
+            />
+        </div>
+        <label class="form-label" for="ProducterAmount">판매 수량(재고)</label>
+        <div class="form-input-item">
+            <input 
+                type="text" 
+                name="ProducterAmount"
+                id="ProducterAmount"
+                required
+            />
+        </div>
+
+        <!-- TODO 예시 추가 -->
+        <label class="form-label" for="ProducterDetail">자세한 설명</label>
+        <div class="form-input-item">
+            <input 
+                type="text" 
+                name="ProducterDetail"
+                id="ProducterDetail"
+                required
+            />
+        </div>
+        <div class="form-label">계좌 정보</div>
+        <div class="form-input-item">
+            <select name="ProducterBank" id="ProducterBank">
+                <option value="none" selected="selected" disabled="disabled" hidden="hidden">계좌 은행</option>
+                <option value="신한은행">신한은행</option>
+                <option value="국민은행">국민은행</option>
+                <!-- TODO 은행종류 추가 -->
+            </select>
+            <label for="ProducterAccount">계좌 번호</label>
+            <input 
+                type="text" 
+                name="ProducterAccount"
+                id="ProducterAccount"
+                required
+            />
+        </div>
         
-        이름: <input type="text" name="ProducterName"> <br>
-        종류: <input type="text" name="Category"> <br>
-        판매 가격: <input type="text" name="ProducterPrice"> <br>
-        수량: <input type="text" name="ProducterAmount"> <br>
-        계좌번호: <input type="text" name="ProducterAccount"> <br>
-        은행선택: <input type="text" name="ProducterBank"> <br>
-        
-        이미지 업로드: <input type="file" name="ImageFile" accept="image/*"> <br>
-        
-        <input type="submit" value="제출">
-        <a href="/main">Back</a>
+        <div class="button-back-next">
+            <button type="button" onclick="location.href='/main'">이전 단계로</button>
+            <button type="submit">다음 단계로</button>
+        </div>
     </form>
 </body>
 <script>

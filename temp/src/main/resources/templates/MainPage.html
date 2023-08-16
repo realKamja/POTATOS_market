@@ -2,54 +2,57 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>MainPage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main</title>
+    <link rel="stylesheet" href="/css/main.css?after">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/main.js"></script>
 </head>
 <body>
-    <p>login success</p>
-    <a href="/member/logout">로그아웃</a>
-    
-    <p th:text="'Hello ' + ${session.loginId}"></p>
-    
-    <a href="/main/saleform">판매</a>
-    <a href="/main/mypage">마이페이지</a>
-    <a href="/main/admin">관리자페이지</a>
-    
-    <!-- 게시글 -->
-	<div id="articleList"></div>
-	
+    <div class="homepage">
+        <div class="cover">
+            <div class="top-container">
+                <p th:text="'Hello ' + ${session.loginId}"></p>
+                <img 
+                    class="material-ui" 
+                    src="/imgs/material-symbols_logout.svg" alt="logout-button" 
+                    title="로그아웃하기"
+                    onclick="handleLogout"
+                />
+            </div>
+            <div class="button-container">
+                <button id="selling-b" onclick="location.href='/main/saleform'">상품 판매하기</button>
+                <button id="mypage-b" onclick="location.href='/main/mypage'">판매/구매 관리</button>
+            </div>
+
+            <div class='bottom-container'>
+                <img 
+                    class="material-ui" id="down-arrow"
+                    src="/imgs/gg_arrow-down-o.svg" alt="next page of main"
+                    title="상품 구경하러 가기"
+                    onclick="scrollToShowcase()"
+                />
+            </div>
+        </div>
+
+        <div class="deco-farmFrash">
+            <span>FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASH FARM FRASHFARM FRASH FARM FRASH FARM FRASH FARM FRASH</span>
+        </div>
+
+        <div class="showcase">
+            <div class="search-box">
+                <img class="material-ui" src="/imgs/material-symbols_search.svg" alt="search button" title="검색하기"/>
+                <input type="text" placeholder="검색어를 입력하세요..."/>
+            </div>
+            <div class="category-filter">
+                <button>더 많은 상품분류</button>
+            </div>
+
+            <!-- 상품 게시판 -->
+            <div id="post-container">
+
+            </div>
+        </div>
+    </div>
 </body>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    function fetchArticles() {
-        $.ajax({
-            url: '/api/producter', // 게시글을 가져올 URL
-            type: 'GET',
-            dataType: 'json',
-            success: function(data) {
-                $('#articleList').empty();
-                
-                $.each(data, function(index, article) {
-                    var articleHTML = `
-                        <div class="article">
-                            <h2>${article.producterTitle}</h2>
-                            <p>${article.producterDetail}</p>
-                            <img src="/images/${article.producterImage}" alt="Image"> <br>
-                        </div>
-                    `;
-                    $('#articleList').append(articleHTML);
-                });
-            },
-            error: function() {
-                console.log('오류 발생');
-            }
-        });
-    }
-    
-    $(document).ready(function() {
-        fetchArticles();
-    });
-</script>
-
-
 </html>

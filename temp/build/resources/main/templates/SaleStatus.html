@@ -1,0 +1,73 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyPage</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: "/getPostTitleByLoggedInMemberId",
+                type: "POST",
+                dataType: "json",
+                success: function(data) {
+                    var postTitleContainer = $("#post-title");
+                    var postTitleList = $("<ul>");
+
+                    data.forEach(function(postId) {
+                        var postTitleItem = $("<li>").text(postId);
+                        postTitleList.append(postTitleItem);
+                    });
+
+                    postTitleContainer.append(postTitleList);
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error fetching post IDs:", error);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="post-title"></div>
+    <hr>
+    
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SaleStatus</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: "/saleTitle",
+                type: "POST",
+                dataType: "json",
+                success: function(data) {
+                    var saleTitleContainer = $("#sale-title");
+                    var saleTitleList = $("<ul>");
+
+                    data.forEach(function(saleTitle) {
+                        var saleTitleItem = $("<p>").text("'" + saleTitle + "'을 작성 하셨습니다");
+                        saleTitleList.append(saleTitleItem);
+                    });
+
+                    saleTitleContainer.append(saleTitleList);
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error fetching sale titles:", error);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="sale-title"></div>
+</body>
+</html>

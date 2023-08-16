@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>PurchaseHistory</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: "/purchaseTitle",
+                type: "POST",
+                dataType: "json",
+                success: function(data) {
+                    var purchaseTitleContainer = $("#purchase-title");
+                    var purchaseTitleList = $("<ul>");
+
+                    data.forEach(function(purchaseTitle) {
+                        var purchaseTitleItem = $("<p>").text("'" + purchaseTitle + "' 을 구매하셨습니다.");
+                        purchaseTitleList.append(purchaseTitleItem);
+                    });
+
+                    purchaseTitleContainer.append(purchaseTitleList);
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error fetching post titles:", error);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="purchase-title"></div>
+</body>
+</html>
