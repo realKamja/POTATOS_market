@@ -14,14 +14,21 @@
 
 	<img th:src="@{/images/{producterImage}(producterImage=${producter.producterImage})}" alt="Product Image">
 
+    <br><a id="buylink">구매하기</a><br>
+
 	<div th:if="${editAccess==true}"><a th:href="@{/main/{id}/delete(id=${producter.id})}">글삭제</a></div> <br>
 	<div th:if="${editAccess==true}"><a th:href="@{/main/{id}/edit(id=${producter.id})}">수정</a></div> <br>
     <div th:if="${isAdmin==true}"><input type="button" value="검토" onclick="adminGoOver()"/></div>
     <a th:href="@{/main}">Back</a>
 </body>
 
+<!-검토 아직 미완성, 자꾸 오류가 나서 프론트는 수정하고 보내 드릴게요->
 <script th:inline="javascript">
-
+    window.onload = function(){
+        var currentUrl = window.location.pathname;
+        var buy = document.getElementById("buylink");
+        buy.href = currentUrl + "/buyerform";
+    };
 
     function adminGoOver(){
         $.ajax({

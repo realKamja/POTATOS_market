@@ -2,6 +2,7 @@ package com.poteto.dto;
 
 import com.poteto.entity.BuyerEntity;
 import com.poteto.entity.MemberEntity;
+import com.poteto.entity.ProducterEntity;
 import lombok.*;
 
 @Getter
@@ -17,6 +18,7 @@ public class BuyerDTO {
 	private String Buyeraddress;
 	
 	private MemberEntity loggedInMember;
+	private ProducterEntity product;
 	
 	public static BuyerDTO toBuyerDTO(BuyerEntity buyerEntity) {
 		BuyerDTO buyerDTO = new BuyerDTO();

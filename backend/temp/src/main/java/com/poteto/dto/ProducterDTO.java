@@ -24,6 +24,8 @@ public class ProducterDTO {
 	private String ProducterPrice;
 	
 	private String ProducterAmount;
+
+	private String ProducterAccount;
 	
 	private String ProducterBank;
 
@@ -41,6 +43,7 @@ public class ProducterDTO {
 		producterEntity.setProducterPrice(ProducterDTO.getProducterPrice());
 		producterEntity.setProducterAmount(ProducterDTO.getProducterAmount());
 		producterEntity.setProducterBank(ProducterDTO.getProducterBank());
+		producterEntity.setProducterAccount(ProducterDTO.getProducterAccount());
 
 		producterEntity.setLoggedInMember(ProducterDTO.getLoggedInMember());
 		

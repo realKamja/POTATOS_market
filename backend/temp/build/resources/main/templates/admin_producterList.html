@@ -29,7 +29,7 @@
     <tbody>
     <tr th:each = "producter:${producterList}">
       <td th:text="${producter.getId}"></td>
-      <td onclick=""><a th:href="@{/main/{id}(id=${producter.getId()})}" th:text="${producter.getProducterTitle}"></a></td>
+      <td><a th:href="@{/main/{id}(id=${producter.getId()})}" th:text="${producter.getProducterTitle}"></a></td>
       <td th:text="${producter.getLoggedInMember().getMemberId()}"></td>
       <td th:text="${producter.getLoggedInMember().getMemberName()}"></td>
       <td th:text="${producter.getLoggedInMember().getMemberPhone()}"></td>

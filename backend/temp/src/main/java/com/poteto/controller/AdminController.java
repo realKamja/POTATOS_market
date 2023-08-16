@@ -1,6 +1,7 @@
 package com.poteto.controller;
 
 import com.poteto.dto.MemberForAdminDTO;
+import com.poteto.entity.BuyerEntity;
 import com.poteto.sevice.BuyerService;
 import com.poteto.sevice.MemberService;
 import com.poteto.sevice.ProducterService;
@@ -72,7 +73,8 @@ public class AdminController {
         try {
             boolean isAdmin = memberService.isAdmin((String) session.getAttribute("loginId"));
             if (isAdmin == true) { // 로그인된 관리자 접근시
-                model.addAttribute("buyerList", buyerService.allBuyerList());
+                List<BuyerEntity> buyerList = buyerService.allBuyerList();
+                model.addAttribute("buyerList", buyerList);
                 return "admin_buyerList"; // 회원 정보 반환
             }
         } catch(Exception e){ // 로그인되지 않은 사용자 접근시

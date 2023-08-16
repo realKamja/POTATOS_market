@@ -38,6 +38,9 @@ public class ProducterEntity {
 	
 	@Column
 	private String ProducterBank;
+
+	@Column
+	private String ProducterAccount;
 	
 	@Column
 	private String producterImage;  // 이미지 파일명을 저장하는 필드
@@ -65,6 +68,7 @@ public class ProducterEntity {
 		producterDTO.setProducterPrice(producterEntity.getProducterPrice());
 		producterDTO.setProducterAmount(producterEntity.getProducterAmount());
 		producterDTO.setProducterBank(producterEntity.getProducterBank());
+		producterDTO.setProducterAccount(producterEntity.getProducterAccount());
 		
 		return producterDTO;
 	}
@@ -90,6 +94,9 @@ public class ProducterEntity {
 		}
 		if(producterEntity.ProducterBank != null) {
 			this.ProducterBank = producterEntity.ProducterBank;
+		}
+		if(producterEntity.ProducterAccount != null) {
+			this.ProducterAccount = producterEntity.ProducterAccount;
 		}
 	}
 }
