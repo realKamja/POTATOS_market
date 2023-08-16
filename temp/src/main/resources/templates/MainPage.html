@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MainPage</title>
+</head>
+<body>
+    <p>login success</p>
+    <a href="/member/logout">로그아웃</a>
+    
+    <p th:text="'Hello ' + ${session.loginId}"></p>
+    
+    <a href="/main/saleform">판매</a>
+    <a href="/main/mypage">마이페이지</a>
+    <a href="/main/admin">관리자페이지</a>
+    
+    <!-- 게시글 -->
+	<div id="articleList"></div>
+	
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function fetchArticles() {
+        $.ajax({
+            url: '/api/producter', // 게시글을 가져올 URL
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                $('#articleList').empty();
+                
+                $.each(data, function(index, article) {
+                    var articleHTML = `
+                        <div class="article">
+                            <h2>${article.producterTitle}</h2>
+                            <p>${article.producterDetail}</p>
+                            <img src="/images/${article.producterImage}" alt="Image"> <br>
+                        </div>
+                    `;
+                    $('#articleList').append(articleHTML);
+                });
+            },
+            error: function() {
+                console.log('오류 발생');
+            }
+        });
+    }
+    
+    $(document).ready(function() {
+        fetchArticles();
+    });
+</script>
+
+
+</html>

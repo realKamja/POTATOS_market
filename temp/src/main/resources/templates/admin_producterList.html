@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>판매게시물 정보</title>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+
+<style>
+  .layout {
+    margin-top: 40px;
+  }
+</style>
+<body>
+
+<div class="layout">
+  <table>
+    <thead>
+    <tr>
+      <th>판매게시글번호</th>
+      <th>제목</th>
+      <th>판매자 아이디</th>
+      <th>판매자 이름</th>
+      <th>판매자 전화번호</th>
+      <th>판매자 이메일</th>
+      <th>검토 여부</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each = "producter:${producterList}">
+      <td th:text="${producter.getId}"></td>
+      <td><a th:href="@{/main/{id}(id=${producter.getId()})}" th:text="${producter.getProducterTitle}"></a></td>
+      <td th:text="${producter.getLoggedInMember().getMemberId()}"></td>
+      <td th:text="${producter.getLoggedInMember().getMemberName()}"></td>
+      <td th:text="${producter.getLoggedInMember().getMemberPhone()}"></td>
+      <td th:text="${producter.getLoggedInMember().getMemberEmail()}"></td>
+      <td th:if="${producter.isAdminGoOver()==false}">검토 대기</td>
+      <td th:if="${producter.isAdminGoOver()==true}">검토 완료</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
