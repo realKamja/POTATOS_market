@@ -51,10 +51,6 @@ public class ProducterEntity {
 	@ManyToOne // 다대일 관계 설정
 	@JoinColumn(name = "logged_in_member_id") // 외래키 설정
 	private MemberEntity loggedInMember; // 로그인된 사용자 아이디
-
-	public void setAdminGoOver(){
-		this.adminGoOver = true;
-	}
 	
 	public ProducterDTO toDTO(ProducterEntity producterEntity) {
 		

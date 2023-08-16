@@ -102,6 +102,6 @@ public class ProducterService {
 
 	public void updateAdminGoOver(Long id){
 		ProducterEntity producter = show(id);
-		producter.setAdminGoOver();
+		producter.setAdminGoOver(true);
 	}
 }

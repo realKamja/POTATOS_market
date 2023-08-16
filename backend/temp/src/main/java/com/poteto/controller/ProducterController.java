@@ -68,8 +68,9 @@ public class ProducterController {
 	
 	@GetMapping("/main/{id}")
 	public String show(@PathVariable Long id, Model model, HttpSession session) {
-		boolean editAccess = false;
-		boolean isAdmin = false;
+		// main/{id}창을 관리자도 사용하기때문에 관리자, 일반유저, 판매자가 동일한 프론트에서 다르게 보이기 위해 권한값 부여해서 타임리프 사용
+		boolean editAccess = false; //수정&삭제
+		boolean isAdmin = false; //검토완료 버튼 보이게
 
 		String loginId = (String) session.getAttribute("loginId");
 		String producterId = producterService.show(id).getLoggedInMember().getMemberId();
@@ -134,7 +135,7 @@ public class ProducterController {
 		return "redirect:/main";
 	}
 
-	@PatchMapping("/main/{id}")
+	@PatchMapping("/main/{id}") // 관리자 검토 버튼을 위한 함수
 	public void adminGoOver(@PathVariable Long id){
 		producterService.updateAdminGoOver(id);
 	}

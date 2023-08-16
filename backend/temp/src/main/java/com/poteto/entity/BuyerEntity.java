@@ -2,10 +2,7 @@ package com.poteto.entity;
 
 import com.poteto.dto.BuyerDTO;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Setter
@@ -13,6 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "buyer_table")
+@ToString
 public class BuyerEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment
@@ -36,7 +34,7 @@ public class BuyerEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "product_id")
-	private ProducterEntity product;
+	private ProducterEntity product; //관리자가 거래내력 조회할 때 buyer테이블을 호출하기 때문에 판매자 정보와 해당 게시물을 불러오기 위해 필요
 	
 	public static BuyerEntity toBuyerEntity(BuyerDTO buyerDTO) {
 		BuyerEntity buyerEntity = new BuyerEntity();

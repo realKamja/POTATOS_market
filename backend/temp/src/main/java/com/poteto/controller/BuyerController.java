@@ -24,7 +24,7 @@ public class BuyerController {
 	private final MemberService memberService; // -> service클레스에 있는 자원을 사용할 권한을 줌
 	private final ProducterService producterService;
 
-	@GetMapping("/main/{id}/buyerform")
+	@GetMapping("/main/{id}/buyerform")//판매자의 정보 product_id를 url의 파라미터로 가져와 buyer테이블에 저장 할 수 있게 경로를 이렇게 바꿨습니다
 	public String buyerform(HttpSession session){
 		String loggedInUsername = (String) session.getAttribute("loginId");
 		if (loggedInUsername==null){
@@ -34,6 +34,8 @@ public class BuyerController {
 	}
 	
 	@PostMapping("/main/{id}/buyerform")
+	// 프론트에서 {id}값이 고유히 살아 있는채로 post호출을 하기 위해 /buyform -> getmapping함수와 동일한 경로로 바꿨습니다
+	// 제 짧은 프론트 지식으로는 이게 최선 이었어서...
 	public String buyInformationSave(BuyerDTO buyerDTO, HttpSession session, @PathVariable Long id) {
 		String loggedInUsername = (String) session.getAttribute("loginId");
 

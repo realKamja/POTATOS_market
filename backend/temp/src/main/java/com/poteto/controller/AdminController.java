@@ -75,6 +75,7 @@ public class AdminController {
             if (isAdmin == true) { // 로그인된 관리자 접근시
                 List<BuyerEntity> buyerList = buyerService.allBuyerList();
                 model.addAttribute("buyerList", buyerList);
+                System.out.println(buyerList.get(0).getId());
                 return "admin_buyerList"; // 회원 정보 반환
             }
         } catch(Exception e){ // 로그인되지 않은 사용자 접근시

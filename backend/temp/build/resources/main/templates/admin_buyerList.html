@@ -37,6 +37,8 @@
         </tr>
         </thead>
         <tbody>
+        <!--디비buyer테이블에 product정보가 들어가게 코드를 바꿨는데 기존 데이터로 사용하게 되면 product정보가 없어서
+            프론트 화면 자체가 안뜨는 에러가 나서 꼭 buyer태이블 디비 DROP한뒤 다시 세팅해주세요-->
         <tr th:each="buyer:${buyerList}">
             <td th:text="${buyer.getId()}"></td>
             <td th:text="${buyer.getProduct().getId()}"></td>
