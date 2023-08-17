@@ -27,18 +27,23 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each = "producter:${producterList}">
+    <tr th:each="producter : ${producterList}">
       <td th:text="${producter.getId}"></td>
-      <td><a th:href="@{/main/{id}(id=${producter.getId()})}" th:text="${producter.getProducterTitle}"></a></td>
+      <td><a th:href="@{/main/sale/{id}(id=${producter.getId()})}" th:text="${producter.getProducterTitle}"></a></td>
       <td th:text="${producter.getLoggedInMember().getMemberId()}"></td>
       <td th:text="${producter.getLoggedInMember().getMemberName()}"></td>
       <td th:text="${producter.getLoggedInMember().getMemberPhone()}"></td>
       <td th:text="${producter.getLoggedInMember().getMemberEmail()}"></td>
-      <td th:if="${producter.isAdminGoOver()==false}">검토 대기</td>
-      <td th:if="${producter.isAdminGoOver()==true}">검토 완료</td>
+      <td>
+        <span th:if="${producter.isAdminGoOver()==false}">검토 대기</span>
+        <span th:if="${producter.isAdminGoOver()==true}">검토 완료</span>
+      </td>
     </tr>
     </tbody>
   </table>
 </div>
+
+<a th:href="@{/admin}">Back</a>
+
 </body>
 </html>

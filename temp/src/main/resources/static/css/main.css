@@ -119,8 +119,9 @@
     overflow: hidden;
 }
 .homepage .post-item img:first-child{
-    width: 100%;
-    aspect-ratio: auto;
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 .homepage .post-item h3{
     width: 100%;

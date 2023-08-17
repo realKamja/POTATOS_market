@@ -52,7 +52,7 @@
         <label class="form-label" for="ProducterPrice">판매 가격</label>
         <div class="form-input-item">
             <input 
-                type="text" 
+                type="text"
                 name="ProducterPrice"
                 id="ProducterPrice"
                 required
@@ -71,12 +71,11 @@
         <!-- TODO 예시 추가 -->
         <label class="form-label" for="ProducterDetail">자세한 설명</label>
         <div class="form-input-item">
-            <input 
-                type="text" 
+            <textarea
                 name="ProducterDetail"
                 id="ProducterDetail"
                 required
-            />
+            ></textarea>
         </div>
         <div class="form-label">계좌 정보</div>
         <div class="form-input-item">
@@ -97,7 +96,7 @@
         
         <div class="button-back-next">
             <button type="button" onclick="location.href='/main'">이전 단계로</button>
-            <button type="submit">다음 단계로</button>
+            <button type="submit" onclick="alert('상품 등록 완료! 판매관리에서 등록한 상품을 관리할 수 있습니다.')">다음 단계로</button>
         </div>
     </form>
 </body>

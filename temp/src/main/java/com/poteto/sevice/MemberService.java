@@ -71,7 +71,9 @@ public class MemberService {
 		if(findByMemberId(loginId).getVerify() == 9){ //verify가 9이면 관리자이다
 			return true; //관리자이면 true반환
 		}
-		else{ return false;}
+		else{
+			return false;
+		}
 	}
 
 	public List<MemberForAdminDTO> membersForAdmin(){

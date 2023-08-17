@@ -16,11 +16,11 @@ $(document).ready(function() {
                 $.each(data, function(index, article) {
                     var articleHTML = `
                         <div class="post-item" title="상품 자세히 보기">
-                            <div class="imgs-container">
+                            <div class="imgs-container" onclick="location.href='/main/sale/${article.id}'">
                                 <img src="/images/${article.producterImage}" alt="Image"> <br>
                             </div>
                             <h3>${article.producterTitle}</h2>
-                            <span>${article.ProducterPrice}</span>
+                            <span>${article.producterPrice}</span>
                         </div>
                     `;
                     $('#post-container').append(articleHTML);

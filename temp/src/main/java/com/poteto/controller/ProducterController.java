@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -22,6 +23,7 @@ import com.poteto.entity.MemberEntity;
 import com.poteto.entity.ProducterEntity;
 import com.poteto.repository.ProducterRepository;
 import com.poteto.sevice.MemberService;
+import com.poteto.sevice.ProducterService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -33,6 +35,9 @@ public class ProducterController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private ProducterService producterService;
 	
 	@GetMapping("/main/saleform")
 	public String slaeform() {
@@ -68,11 +73,16 @@ public class ProducterController {
 	}
 	
 	@GetMapping("/main/sale/{id}")
-	public String show(@PathVariable Long id, Model model) {
+	public String show(@PathVariable Long id, Model model, MemberEntity memberEntity, HttpSession session) {
 		
 		ProducterEntity producterEntity = producterRepository.findById(id).orElse(null);
 		
+		// 로그인한 멤버 정보 가져오기
+		String loggedInUsername = (String) session.getAttribute("loginId");
+		MemberEntity loggedInMemberId = memberService.findByMemberId(loggedInUsername);
+			    
 		model.addAttribute("producter", producterEntity);
+		model.addAttribute("member", loggedInMemberId);
 		
 		return "SaleShow";
 	}
@@ -129,4 +139,15 @@ public class ProducterController {
 		
 		return "redirect:/main";
 	}
+	
+	@PostMapping("/updateAdminGoOver/{productId}")
+    @ResponseBody
+    public String updateAdminGoOver(@PathVariable Long productId) {
+        try {
+            producterService.updateAdminGoOver(productId);
+            return "success";
+        } catch (IllegalArgumentException e) {
+            return "error";
+        }
+    }
 }

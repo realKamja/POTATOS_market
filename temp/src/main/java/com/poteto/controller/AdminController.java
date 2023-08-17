@@ -9,18 +9,17 @@ import com.poteto.sevice.ProducterService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RequiredArgsConstructor
-@RestController
+@Controller
 @RequestMapping()
 public class AdminController {
 	
@@ -71,7 +70,7 @@ public class AdminController {
         }
         return "no_access"; // 로그인된 일반 사용자 접근시
     }
-
+    /* 구현 x
     //구매 테이블 다 가져오기
     @GetMapping("/admin/buyers")
     public String getBuyerList(Model model, HttpSession session){
@@ -87,7 +86,7 @@ public class AdminController {
         }
         return "no_access"; // 로그인된 일반 사용자 접근시
     }
-    
+    */
     
     @PatchMapping("/main/{id}")
 	public void adminGoOver(@PathVariable Long id){

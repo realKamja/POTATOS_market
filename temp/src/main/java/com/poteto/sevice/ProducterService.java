@@ -98,8 +98,14 @@ public class ProducterService {
 		return articleList;
 	}
 	
-	public void updateAdminGoOver(Long id){
-		ProducterEntity producter = show(id);
-		producter.setAdminGoOver(false);
-	}
+	@Transactional
+    public void updateAdminGoOver(Long id) {
+        ProducterEntity producter = show(id);
+        if (producter != null) {
+            producter.setAdminGoOver(true);
+            producterRepository.save(producter);
+        } else {
+            throw new IllegalArgumentException("Producter not found");
+        }
+    }
 }

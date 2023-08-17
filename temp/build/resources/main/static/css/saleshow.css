@@ -1,0 +1,39 @@
+@import "./style.css?after";
+
+/* 상품 설명 컨테이너 */
+.prod-info-container{
+    display: flex;
+    justify-content: space-between;
+
+    margin: 0px 35px 30px 35px;
+}
+.prod-img{
+    display:table-cell;
+    vertical-align:middle;
+    text-align: center;
+
+    width: 50%;
+    height: 50%;
+
+    border: solid var(--c-main);
+    border-radius: 10px;
+
+    overflow: hidden;
+
+}
+.prod-img img{
+    max-width:50%;
+    max-height:50%;
+}
+.prod-info{
+    width: 50%;
+    height: 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.prod-info h3{
+    border-bottom: solid var(--c-main);
+}
