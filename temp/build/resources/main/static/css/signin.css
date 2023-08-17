@@ -1,4 +1,4 @@
-@import "./style.css";
+@import "./style.css?after";
 
 input:invalid + span::after {
     content: "✖";
@@ -12,6 +12,24 @@ input:valid + span::after {
     color: #009000;
 }
 
-input:valid + span + small {
-    display: none;
+/* 회원가입 버튼 */
+.button-container{
+    text-align: center;
+}
+.button-container button{
+    background-color: var(--c-main);
+}
+
+/* 세세한 조정 */
+#distinct-check{
+    font-size: 20px;
+    height: 32px;
+    padding: 0px 10px;
+}
+.deco-signin-small{
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+.deco-signin-input{
+    margin-bottom: 10px;
 }
