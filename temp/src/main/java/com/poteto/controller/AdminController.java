@@ -22,19 +22,19 @@ import java.util.List;
 @Controller
 @RequestMapping()
 public class AdminController {
-	
-	private final MemberService memberService;
+
+    private final MemberService memberService;
     private final ProducterService producterService;
     private final BuyerService buyerService;
 
     @GetMapping("/admin")
-    public String adminPage(HttpSession session){
+    public String adminPage(HttpSession session) {
         try {
             boolean isAdmin = memberService.isAdmin((String) session.getAttribute("loginId"));
             if (isAdmin == true) { // 로그인된 관리자 접근시 true httpbody에 true반환
                 return "admin_main";
             }
-        } catch(Exception e){ // 로그인되지 않은 사용자 접근시
+        } catch (Exception e) { // 로그인되지 않은 사용자 접근시
             e.getMessage();
             return "no_access";
         }
@@ -42,7 +42,7 @@ public class AdminController {
     }
 
     @GetMapping("/admin/members")
-    public String membersForAdmin(Model model, HttpSession session){
+    public String membersForAdmin(Model model, HttpSession session) {
         try {
             boolean isAdmin = memberService.isAdmin((String) session.getAttribute("loginId"));
             if (isAdmin == true) { // 로그인된 관리자 접근시
@@ -50,46 +50,29 @@ public class AdminController {
                 model.addAttribute("memberList", memberList);
                 return "admin_memberList";
             }
-        } catch(Exception e){ // 로그인되지 않은 사용자 접근시
+        } catch (Exception e) { // 로그인되지 않은 사용자 접근시
             return "no_access";
         }
         return "no_access"; // 로그인된 일반 사용자 접근시
     }
 
-    //product 테이블들 다 가져오기
+    // product 테이블들 다 가져오기
     @GetMapping("/admin/producters")
-    public String getProducterList(Model model, HttpSession session){
+    public String getProducterList(Model model, HttpSession session) {
         try {
             boolean isAdmin = memberService.isAdmin((String) session.getAttribute("loginId"));
             if (isAdmin == true) { // 로그인된 관리자 접근시
                 model.addAttribute("producterList", producterService.index());
                 return "admin_producterList"; // 회원 정보 반환
             }
-        } catch(Exception e){ // 로그인되지 않은 사용자 접근시
+        } catch (Exception e) { // 로그인되지 않은 사용자 접근시
             return "no_access";
         }
         return "no_access"; // 로그인된 일반 사용자 접근시
     }
-    /* 구현 x
-    //구매 테이블 다 가져오기
-    @GetMapping("/admin/buyers")
-    public String getBuyerList(Model model, HttpSession session){
-        try {
-            boolean isAdmin = memberService.isAdmin((String) session.getAttribute("loginId"));
-            if (isAdmin == true) { // 로그인된 관리자 접근시
-                List<BuyerEntity> buyerList = buyerService.allBuyerList();
-                model.addAttribute("buyerList", buyerList);
-                return "admin_buyerList"; // 회원 정보 반환
-            }
-        } catch(Exception e){ // 로그인되지 않은 사용자 접근시
-            return "no_access";
-        }
-        return "no_access"; // 로그인된 일반 사용자 접근시
-    }
-    */
     
     @PatchMapping("/main/{id}")
-	public void adminGoOver(@PathVariable Long id){
-		producterService.updateAdminGoOver(id);
-	}
+    public void adminGoOver(@PathVariable Long id) {
+        producterService.updateAdminGoOver(id);
+    }
 }

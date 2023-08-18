@@ -1,0 +1,160 @@
+/*
+    전체적인 기본 스타일 설정 css 파일
+
+    폰트, 기본 팔레트 색상 변수로 지정
+    기본 버튼 스타일
+    (.underline) 밑줄 스타일
+    픽토그랜 ui 버튼
+    폼에 들어가는 스타일
+        - (.form-title) 폼 제목
+        - (.button-back-next)이전, 다음 버튼
+        - (.form-label, .form-input-item)라벨과 인풋디자인
+        - (.form-inline) 라벨과 인풋을 한줄로(이 클래스로 감싸져야 함)
+    FARM FRASH 띠 스타일
+
+    @import "./style.css"; 로 다른 css파일에도 불러올 수 있음.
+ */
+
+ @font-face {
+    font-family: 'BMJUA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root{
+    --c-main: #02D790;
+    --c-yellow: #FFFFA3;
+    --c-red: #FF6502;
+    --c-green: #E4FCC0;
+    --c-black: #342628;
+}
+
+body{
+    margin: 0px;
+    font-family: 'BMJUA';
+}
+
+/* 버튼 기본 설정 */
+button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+    margin: 0;
+    padding: 10px 20px 10px 20px;
+    
+    font-family: 'BMJUA';
+    font-size: 25px;
+    text-align: center;
+    text-decoration: none;
+    
+    border: none;
+    border-radius: 4px;
+    border-color: var(--c-black);
+    
+    box-shadow: 0 4px 6px -1px #646363;
+    
+    cursor: pointer;
+    transition: 0.5s;
+}
+button:active,
+button:hover,
+button:focus {
+    box-shadow: 0 1px 1px 0px #646363;
+}
+
+/* 밑줄 */
+.underline{
+    border: none;
+    border-bottom: solid var(--c-main);
+
+    padding-top: 1px;
+}
+.underline input{
+    border: none;
+}
+
+/* 픽토그램 ui 버튼 */
+.material-ui{
+    cursor: pointer;
+}
+
+/* 폼 제목 */
+.form-title{
+    background-color: var(--c-green);
+
+    width: 100%;
+    height: 36px;
+    padding: 8px;
+    text-align: center;
+
+    font-size: 34px;
+    box-shadow: 0 4px 6px 0px #646363;
+}
+
+/* 이전/다음 버튼 */
+.button-back-next{
+    display: flex;
+    justify-content: space-between;
+
+    font: 30px;
+    
+    margin: 20px;
+}
+.button-back-next button:first-child{
+    background-color: var(--c-red);
+}
+.button-back-next button:last-child{
+    background-color: var(--c-main);
+}
+
+/* 폼 라벨, 인풋 스타일 */
+.form-label{
+    display: block;
+    background-color: var(--c-green);
+
+    border-radius: 50px;
+
+    width: 20%;
+    height: 32px;
+    padding: 3px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+
+    font-size: 31px;
+    text-align: center;
+    box-shadow: 0 1px 1px 0px #646363;
+}
+.form-input-item{
+    border: solid var(--c-main);
+    border-radius: 5px;
+
+    margin: 0px 35px 30px 35px;
+    padding: 4px;
+}
+.form-input-item input, .form-input-item textarea{
+    border: none;
+    font-size: 20px;
+}
+.form-input-item label{
+    font-size: 20px;
+}
+
+/* 한 줄 라벨&인풋 */
+.form-inline{
+    display: flex;
+}
+.form-inline .form-input-item{
+    width: 65%;
+}
+
+/* 중간중간 들어가는 꾸밈 띠 */
+.deco-farmFrash{
+    width: 98vw;
+
+    overflow: hidden;
+}
+.deco-farmFrash span{
+    white-space: nowrap;
+}

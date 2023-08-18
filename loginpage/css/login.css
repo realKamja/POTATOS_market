@@ -1,0 +1,150 @@
+@import "./style.css?after";
+
+/* 로그인 페이지 */
+.login-container{
+    margin: 20vh 20vw 20vh 20vw;
+    padding: 5vh 5vw 5vh 5vw;
+    display: grid;
+    place-items: center;
+  
+    justify-content: space-around;
+    grid-template-rows: 1fr 1fr 1fr;
+
+  
+    width: 50%;
+    height: 200px;
+
+    border: solid;
+    border-color: #350bdc;
+
+}
+
+.login-container .memberId{
+  
+ font-size: 50px;
+ padding: 0px;
+  
+}
+
+#memberId{
+  width: 50%;
+  font-size: 50px;
+  border-width: 0px 0px 3px 0px;
+  border-color:  var(--c-main);
+}
+
+#Id {
+  width: auto;
+  height: 50px;
+  /*background-image: url("./img/Natural Food.svg"); 
+  background-repeat: no-repeat;
+  background-position: 5px left;
+  padding-left: 40px;*/
+  
+  outline: none;
+  
+}
+
+#image_leaf{
+  width: 60px;
+  height: 50px;
+  object-fit: cover;
+}
+
+
+.login-container .memberPassword{
+  
+  font-size: 50px;
+  padding: 0px;
+
+}
+
+#memberPassword{
+  width: 50%;
+  font-size: 50px;
+  border-width: 0px 0px 3px 0px;
+  border-color:  var(--c-main);
+}
+
+#Password{
+  width: auto;
+  height: 50px;
+  /*background-image: url("./img/Key.svg"); 
+  background-repeat: no-repeat;
+  background-position: 5px left;
+  padding-left: 40px;*/
+  
+  outline: none;
+  
+}
+
+#image_key{
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+
+
+.login-button button {
+    padding: 3vh 2vw;
+    margin: 5px;
+}
+
+#login-a{
+    background-color: var(--c-red);
+   /* border: none;*/
+  
+    font-size: 40px;
+    text-align: center;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+    margin: 5px;
+    padding: 3vh 2vw;
+    
+    font-family: 'BMJUA';
+    font-size: 50px;
+    text-align: center;
+    text-decoration: none;
+    
+    border: none;
+    border-radius: 4px;
+    border-color: none;
+    
+    box-shadow: 0 4px 6px -1px #646363;
+    
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#login-b{
+    background-color: var(--c-main);
+   /* border: none;*/
+  
+    font-size: 40px;
+    text-align: center;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+    margin: 5px;
+    padding: 3vh 2vw;
+    
+    font-family: 'BMJUA';
+    font-size: 50px;
+    text-align: center;
+    text-decoration: none;
+    
+    border: none;
+    border-radius: 4px;
+    border-color: none;
+    
+    box-shadow: 0 4px 6px -1px #646363;
+    
+    cursor: pointer;
+    transition: 0.5s;
+}
