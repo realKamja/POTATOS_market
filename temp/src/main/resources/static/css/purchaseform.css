@@ -4,6 +4,10 @@ body{
     font-size: 20px;
 }
 
+form{
+    margin-top: 35px;
+}
+
 /* 주문서 */
 .prod-infoNamount{
     display:flex;
@@ -11,7 +15,7 @@ body{
     border-radius: 40px;
     box-shadow: 0 4px 6px -1px #646363;
 
-    margin: 0px 35px 10px 35px;
+    margin: 20px 35px 10px 35px;
     padding: 20px;
 }
 .prod-img{
@@ -34,16 +38,18 @@ body{
     justify-content: space-between;
 
     width: 70%;
-    padding-left: 20px;
+    padding: 20px;
 }
 .total-cost-container{
-    margin: 0px 35px 20px 35px;
+    margin: 1px 50% 20px 35px;
+
+    border-color: var(--c-red);
 }
 
 /* 고객정보 */
 #BuyerAddress{
     margin: 0px 35px 20px 35px;
-    width: 100%;
+    width: 94.5%;
 
     font-size: 20px;
 }

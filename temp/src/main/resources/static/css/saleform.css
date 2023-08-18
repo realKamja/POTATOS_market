@@ -1,1 +1,6 @@
 @import "./style.css?after";
+
+#ProducterDetail{
+    width: 100%;
+    height: 140px;
+}

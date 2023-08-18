@@ -7,7 +7,7 @@ $(document).ready(function() {
             $('#total-cost').text("0");
         } else {
             var totalCost = parseInt(amount) * price;
-            $('#total-cost').text(totalCost);
+            $('#total-cost').text(totalCost.toLocaleString('ko-KR'));
         }
     });
 });

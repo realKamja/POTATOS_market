@@ -1,47 +1,9 @@
-<!--
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>MyPage</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $.ajax({
-                url: "/getPostTitleByLoggedInMemberId",
-                type: "POST",
-                dataType: "json",
-                success: function(data) {
-                    var postTitleContainer = $("#post-title");
-                    var postTitleList = $("<ul>");
-
-                    data.forEach(function(postId) {
-                        var postTitleItem = $("<li>").text(postId);
-                        postTitleList.append(postTitleItem);
-                    });
-
-                    postTitleContainer.append(postTitleList);
-                },
-                error: function(xhr, status, error) {
-                    console.error("Error fetching post IDs:", error);
-                }
-            });
-        });
-    </script>
-</head>
-<body>
-    <div id="post-title"></div>
-    <hr>
-    
-</body>
-</html>
--->
-
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>SaleStatus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {

@@ -143,6 +143,7 @@ button:focus {
 /* 중간중간 들어가는 꾸밈 띠 */
 .deco-farmFrash{
     width: 98vw;
+    margin-top: 3px;
 
     overflow: hidden;
     opacity: 90%;
