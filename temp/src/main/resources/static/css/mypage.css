@@ -1,0 +1,26 @@
+@import './style.css?after';
+
+.cover{
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.button-container{
+    display: flex;
+    justify-content: center;
+}
+.button-container button:first-child{
+    background-color: var(--c-main);
+}
+.button-container button:last-child{
+    background-color: var(--c-red);
+}
+button{
+    width: 30vw;
+    font-size: 50px;
+
+    margin: 10px;
+}

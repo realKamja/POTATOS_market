@@ -19,6 +19,10 @@
 				<li>분류: <span th:text="${producter.Category}"></span></li>
 				<li>판매 가격: <span th:text="${producter.ProducterPrice}"></span></li>
 			</ul>
+			<div class="edit-button">
+				<button type="button" th:if="${member.verify == 9 or member.id == producter.LoggedInMember.id}" th:onclick="|location.href='@{/main/sale/{id}/edit(id=${producter.id})}'|">수정</button>
+				<button type="button" th:if="${member.verify == 9 or member.id == producter.LoggedInMember.id}" onclick="location.href='/main'">글삭제</button>
+			</div>
 		</div>
 	</div>
 	
@@ -30,8 +34,6 @@
 		<button type="button" th:onclick="|location.href='@{/main/sale/{id}/purchaseform(id=${producter.id})}'|">구매하기</button>
 	</div>
 
-	<a th:if="${member.verify == 9 or member.id == producter.LoggedInMember.id}" th:href="@{/main/sale/{id}/edit(id=${producter.id})}">수정</a>
-	<a th:if="${member.verify == 9 or member.id == producter.LoggedInMember.id}" th:href="@{/main/sale/{id}/delete(id=${producter.id})}">글삭제</a>
 	<button th:if="${member.verify == 9}" th:id="adminGoOverButton" th:attr="data-producter-id=${producter.id}" type="button">
 	    <span th:if="${producter.adminGoOver == false}">검토대기</span>
 	    <span th:if="${producter.adminGoOver == true}">검토완료</span>

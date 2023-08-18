@@ -2,26 +2,117 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Product</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProdForm</title>
+    <link rel="stylesheet" href="/css/saleform.css">
 </head>
 <body>
-    <h1>Edit Product</h1>
+    <h1 class="form-title">상품 수정하기</h1>
+
     <form th:action="@{/main/sale/{id}/update(id=${producter.id})}" method="post" enctype="multipart/form-data">
-    	<!--<input type="hidden" name="id" th:value="${producter.id}">-->
-		
-        제목: <input type="text" name="ProducterTitle"> <br>
-        내용: <input type="text" name="ProducterDetail"> <br>
-        이름: <input type="text" name="ProducterName"> <br>
-        종류: <input type="text" name="Category"> <br>
-        판매 가격: <input type="text" name="ProducterPrice"> <br>
-        수량: <input type="text" name="ProducterAmount"> <br>
-        계좌번호: <input type="text" name="ProducterAccount"> <br>
-        은행선택: <input type="text" name="ProducterBank"> <br>
+        <div class="form-inline">
+            <label class="form-label" for="ProducterTitle">판매글 제목</label>
+            <div class="form-input-item">
+                <input 
+                    type="text" 
+                    name="ProducterTitle"
+                    id="ProducterTitle"
+                    th:value="${producter.ProducterTitle}"
+                    required
+                />
+            </div>
+        </div>
+        <div class="form-inline">
+            <label class="form-label" for="ProducterName">상품 이름</label>
+            <div class="form-input-item">
+                <input 
+                    type="text" 
+                    name="ProducterName"
+                    id="ProducterName"
+                    th:value="${producter.ProducterName}"
+                    required
+                />
+                <!-- TODO 분류가 어느게 있는지 몰라 적기 어려움 -->
+                <label for="Category">상품 종류</label>
+                <input 
+                    type="text" 
+                    name="Category"
+                    id="Category"
+                    th:value="${producter.Category}"
+                    required
+                />
+            </div>
+        </div>
+
+        <!-- TODO 사진 추가 방법 -->
+        <label class="form-label" for="ImageFile">상품 사진 등록</label>
+        <div class="form-input-item">
+            <input 
+                type="file" 
+                name="ImageFile" accept="image/*"
+                id="ImageFile"
+                required
+            />
+        </div>
+
+        <div class="form-inline">
+            <label class="form-label" for="ProducterPrice">판매 가격</label>
+            <div class="form-input-item">
+                <input 
+                    type="text"
+                    name="ProducterPrice"
+                    id="ProducterPrice"
+                    th:value="${producter.ProducterPrice}"
+                    required
+                />
+            </div>
+        </div>
+        <div class="form-inline">
+            <label class="form-label" for="ProducterAmount">판매 수량(재고)</label>
+            <div class="form-input-item">
+                <input 
+                    type="text" 
+                    name="ProducterAmount"
+                    id="ProducterAmount"
+                    th:value="${producter.ProducterAmount}"
+                    required
+                />
+            </div>
+        </div>
+
+        <!-- TODO 예시 추가 -->
+        <label class="form-label" for="ProducterDetail">자세한 설명</label>
+        <div class="form-input-item">
+            <textarea
+                name="ProducterDetail"
+                id="ProducterDetail"
+                th:text="${producter.ProducterDetail}"
+                required
+            ></textarea>
+        </div>
+        <div class="form-inline">
+            <div class="form-label">계좌 정보</div>
+            <div class="form-input-item">
+                <select name="ProducterBank" id="ProducterBank">
+                    <option th:value="${producter.ProducterBank}" th:text="${producter.ProducterBank}" selected="selected"></option>
+                    <option value="신한은행">신한은행</option>
+                    <option value="국민은행">국민은행</option>
+                    <!-- TODO 은행종류 추가 -->
+                </select>
+                <label for="ProducterAccount">계좌 번호</label>
+                <input 
+                    type="text" 
+                    name="ProducterAccount"
+                    id="ProducterAccount"
+                    required
+                />
+            </div>
+        </div>
         
-        이미지 업로드: <input type="file" name="ImageFile" accept="image/*"> <br>
-        
-        <input type="submit" value="제출">
-        <a href="/main">Back</a>
+        <div class="button-back-next">
+            <button type="button" th:onclick="|location.href='@{/main/sale/{id}(id=${producter.id})}'|">이전 단계로</button>
+            <button type="submit" onclick="alert('수정 완료! 판매관리에서 등록한 상품을 관리할 수 있습니다.')">수정 완료</button>
+        </div>
     </form>
 </body>
 </html>
