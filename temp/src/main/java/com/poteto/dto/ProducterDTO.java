@@ -32,6 +32,8 @@ public class ProducterDTO {
 	private String ProducterAmount;
 	
 	private String ProducterBank;
+
+	private String ProducterImagePath;
 	
 	private String ProducterImage;
 	
@@ -50,6 +52,7 @@ public class ProducterDTO {
 		producterEntity.setProducterPrice(ProducterDTO.getProducterPrice());
 		producterEntity.setProducterAmount(ProducterDTO.getProducterAmount());
 		producterEntity.setProducterBank(ProducterDTO.getProducterBank());
+		producterEntity.setProducterImagePath(ProducterDTO.getProducterImagePath());
 		producterEntity.setProducterImage(ProducterDTO.getProducterImage());
 		producterEntity.setLoggedInMember(ProducterDTO.getLoggedInMember());
 		

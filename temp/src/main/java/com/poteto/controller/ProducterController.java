@@ -1,5 +1,9 @@
 package com.poteto.controller;
 
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.util.Base64;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -56,11 +60,11 @@ public class ProducterController {
 		if (!imageFile.isEmpty()) {
 			String fileExtension = imageFile.getOriginalFilename();
 		    String fileName = UUID.randomUUID().toString() + "_" + fileExtension;
-	        producterEntity.setProducterImage(fileName);
-
+	        producterEntity.setProducterImagePath(fileName);
+			// 파일을 인코딩해서 스트링 형식으로 ProducterImage에 저장하고, 이미지 이름은 ImagePath에 저장
 	        try {
-	            Path filePath = Paths.get("src/main/resources/static/images/" + fileName);
-	            Files.copy(imageFile.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+				String fileCode = convertImageInputStreamToBase64(imageFile.getInputStream());
+				producterEntity.setProducterImage(fileCode);
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
@@ -70,6 +74,17 @@ public class ProducterController {
 		ProducterEntity saved = producterRepository.save(producterEntity);
 		
 		return "redirect:/main/sale/" + saved.getId();
+	}
+	private String convertImageInputStreamToBase64(InputStream imageInputStream) throws IOException {
+		try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+			byte[] buffer = new byte[4096];
+			int bytesRead;
+			while ((bytesRead = imageInputStream.read(buffer)) != -1) {
+				outputStream.write(buffer, 0, bytesRead);
+			}
+			byte[] imageBytes = outputStream.toByteArray();
+			return Base64.getEncoder().encodeToString(imageBytes);
+		}
 	}
 	
 	@GetMapping("/main/sale/{id}")

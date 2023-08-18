@@ -36,7 +36,7 @@
     background-color: var(--c-main);
 }
 #mypage-b{
-    background-color: var(--c-yellow);
+    background-color: var(--c-red);
 }
 .cover .material-ui{
     width: 60px;

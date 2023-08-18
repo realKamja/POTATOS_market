@@ -51,6 +51,9 @@ public class ProducterEntity {
 	
 	@Column
 	private String ProducterBank;
+
+	@Column
+	private String ProducterImagePath;
 	
 	@Column
 	private String ProducterImage;  // 이미지 파일명을 저장하는 필드
@@ -74,6 +77,7 @@ public class ProducterEntity {
 		producterDTO.setProducterPrice(producterEntity.getProducterPrice());
 		producterDTO.setProducterAmount(producterEntity.getProducterAmount());
 		producterDTO.setProducterBank(producterEntity.getProducterBank());
+		producterDTO.setProducterImagePath(ProducterImagePath);
 		producterDTO.setProducterImage(producterEntity.getProducterImage());
 		producterDTO.setLoggedInMember(producterEntity.getLoggedInMember());
 		
@@ -101,6 +105,9 @@ public class ProducterEntity {
 		}
 		if(producterEntity.ProducterBank != null) {
 			this.ProducterBank = producterEntity.ProducterBank;
+		}
+		if(producterEntity.ProducterImagePath != null){
+			this.ProducterImagePath = producterEntity.ProducterImagePath;
 		}
 		if(producterEntity.ProducterImage != null) {
 			this.ProducterImage = producterEntity.ProducterImage;
