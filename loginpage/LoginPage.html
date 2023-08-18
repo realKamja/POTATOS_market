@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./css/login.css?after">
+</head>
+<body>
+    <div class="login-container">
+        <form action="/member/login" method="post">
+        <div class="memberId">
+            <img id="image_leaf" src="./css/img/Natural Food.svg" alt="잎사귀"/>
+            <label id="Id" for="memberId">&nbsp;아이디:</label>    
+            <input type="text" name="memberId" id="memberId" required   >
+        </div>
+          
+    
+          
+        <div class="memberPassword">
+            <img id="image_key" src="./css/img/Key.svg" alt="열쇠"/>
+            <label id="Password" for="memberPassword">비밀번호:</label>
+            <input type="password" name="memberPassword" id="memberPassword" required  >
+        </div>
+          
+        <div class="login-button">
+            <div class="login-a">
+                <button id="login-a" type="submit">들어가기</button>
+                <button id="login-b" type="button" onclick="location.href='/member/signin'">회원가입</button>
+            </div>
+        </form>
+          
+    </div>
+</body>
+</html>

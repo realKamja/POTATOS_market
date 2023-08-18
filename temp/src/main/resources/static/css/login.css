@@ -1,1 +1,119 @@
 @import "./style.css?after";
+
+/* 로그인 페이지 */
+.login-container{
+    padding: 5vh 5vw 5vh 5vw;
+    display: grid;
+    place-items: center;
+  
+    justify-content: space-around;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    width: 50%;
+    height: 900px;
+
+}
+
+.login-container .memberId{
+  
+ font-size: 50px;
+  
+}
+
+#memberId {
+  width: auto;
+  height: 50px;
+  background-image: url("../imgs/Natural Food.svg"); 
+  background-repeat: no-repeat;
+  background-position: 5px left;
+  padding-left: 40px;
+  border-width: 0px 0px 3px 0px;
+  border-color: var(--c-main);
+  outline: none;
+  
+}
+
+#memberPassword{
+  width: auto;
+  height: 50px;
+  background-image: url("../imgs/Key.svg"); 
+  background-repeat: no-repeat;
+  background-position: 5px left;
+  padding-left: 40px;
+  border-width: 0px 0px 3px 0px;
+  border-color:  var(--c-main);
+  outline: none;
+  
+}
+
+
+.login-container .memberPassword{
+  
+  font-size: 50px;
+}
+
+
+.login-button button {
+    padding: 3vh 2vw;
+    margin: 5px;
+}
+
+#login-a{
+    background-color: var(--c-red);
+   /* border: none;*/
+  
+  padding: 30px;
+    font-size: 50px;
+    text-align: center;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+    margin: 5px;
+    padding: 3vh 2vw;
+    
+    font-family: 'BMJUA';
+    font-size: 50px;
+    text-align: center;
+    text-decoration: none;
+    
+    border: none;
+    border-radius: 4px;
+    border-color: none;
+    
+    box-shadow: 0 4px 6px -1px #646363;
+    
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#login-b{
+    background-color: var(--c-main);
+   /* border: none;*/
+  
+  padding: 30px;
+    font-size: 50px;
+    text-align: center;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+    margin: 5px;
+    padding: 3vh 2vw;
+    
+    font-family: 'BMJUA';
+    font-size: 50px;
+    text-align: center;
+    text-decoration: none;
+    
+    border: none;
+    border-radius: 4px;
+    border-color: none;
+    
+    box-shadow: 0 4px 6px -1px #646363;
+    
+    cursor: pointer;
+    transition: 0.5s;
+}
