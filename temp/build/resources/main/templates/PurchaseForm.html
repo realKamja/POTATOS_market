@@ -59,7 +59,7 @@
 		<input type="text" name="BuyerAddress" id="BuyerAddress" class="underline"/>
 		
         <div class="button-back-next">
-            <button type="button" th:onclick="|location.href='@{/main/sale/{producter.id}}'|">이전 단계로</button>
+            <button type="button" th:onclick="|location.href='@{/main/sale/{id}(id=${producter.id})}'|">이전 단계로</button>
             <button type="submit" onclick="alert('상품 구매 완료! 구매 승인이 되면 안내대로 입금을 해주세요.')">구매하기</button>
         </div>
 	</form>

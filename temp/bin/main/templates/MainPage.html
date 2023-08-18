@@ -16,7 +16,7 @@
                 <img 
                     class="material-ui" 
                     src="/img/material-symbols_logout.svg" alt="logout-button" 
-                    title="로그아웃하기"
+                    title="나가기"
                     onclick="location.href='/member/logout'"
                 />
             </div>
@@ -54,5 +54,15 @@
             </div>
         </div>
     </div>
+    <script th:inline="javascript">
+        $(document).ready(function() {
+            $(document).click(function() {
+                if(![[${session.loginId}]]) {
+                    alert("로그인 후 서비스를 이용해주세요.");
+                    window.location.href = "/";
+                }
+            });
+        });
+    </script>
 </body>
 </html>
