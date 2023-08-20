@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>거래 정보</title>
+    <link rel="stylesheet" href="./css/login.css?after">
+
+</head>
+
+<style>
+    .layout {
+        margin-top: 40px;
+        font-size: small;
+    }
+</style>
+<body>
+
+<div class="layout">
+    <table>
+        <thead>
+        <tr>
+            <th>구매 번호</th>
+            <th>구매한 상품게시물 번호</th>
+            <th>구매한 상품 게시물</th>
+            <th>구매 수량</th>
+            <th>구매자 송금 은행명</th>
+            <th>구매자 송금 계좌번호</th>
+            <th>택배를 받을 구매자의 주소</th>
+            <th>구매자 아이디</th>
+            <th>구매자 이름</th>
+            <th>구매자 전화번호</th>
+            <th>구매자 이메일</th>
+            <th>판매자 아이디</th>
+            <th>판매자 이름</th>
+            <!--<th>판매자가 입금받을 은행명</th>
+            <th>판매자가 입금받을 계좌번호</th>-->
+            <th>판매자 전화번호</th>
+            <th>판매자 이메일</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--디비buyer테이블에 product정보가 들어가게 코드를 바꿨는데 기존 데이터로 사용하게 되면 product정보가 없어서
+            프론트 화면 자체가 안뜨는 에러가 나서 꼭 buyer태이블 디비 DROP한뒤 다시 세팅해주세요-->
+        <tr>
+            <td th:text="${buyer.getId()}"></td>
+            <td th:text="${buyer.getProduct().getId()}"></td>
+            <td><a th:text="${buyer.getProduct().getProducterTitle()}" th:href="@{/main/{id}(id=${buyer.getProduct().getId()})}"></a></td>
+            <td th:text="${buyer.getBuyerAmount()}"></td>
+            <td th:text="${buyer.getBuyerBank()}"></td>
+            <td th:text="${buyer.getBuyerAccount()}"></td>
+            <td th:text="${buyer.getBuyeraddress()}"></td>
+            <td th:text="${buyer.getLoggedInMember().getMemberId()}"></td>
+            <td th:text="${buyer.getLoggedInMember().getMemberName()}"></td>
+            <td th:text="${buyer.getLoggedInMember().getMemberPhone()}"></td>
+            <td th:text="${buyer.getLoggedInMember().getMemberEmail()}"></td>
+            <td th:text="${buyer.getProduct().getLoggedInMember().getMemberId()}"></td>
+            <td th:text="${buyer.getProduct().getLoggedInMember().getMemberName()}"></td>
+            <td th:text="${buyer.getProduct().getProducterBank()}"></td>
+            <td th:text="${buyer.getProduct().getProducterAccount()}"></td>
+            <td th:text="${buyer.getProduct().getLoggedInMember().getMemberPhone()}"></td>
+            <td th:text="${buyer.getProduct().getLoggedInMember().getMemberEmail()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
